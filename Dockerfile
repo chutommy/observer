@@ -1,5 +1,6 @@
 FROM ubuntu
 RUN apt-get update -y
+RUN apt-get upgrade -y
 RUN apt-get install -y libv4l-dev
 
 FROM denismakogon/gocv-alpine:4.0.1-buildstage
@@ -9,3 +10,4 @@ RUN go get -d -u gobot.io/x/gobot/...
 RUN mkdir /app
 ADD . /app
 WORKDIR /app
+RUN go build -o main .

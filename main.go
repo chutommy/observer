@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"gobot.io/x/gobot"
-	"gobot.io/x/gobot/drivers/gpio"
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
 	"gocv.io/x/gocv"
@@ -24,10 +23,8 @@ var centered = false
 // connection
 var raspiAdaptor = raspi.NewAdaptor()
 
-// list of devices
+// camera driver
 var camera = opencv.NewCameraDriver(cameraSource)
-var servoX = gpio.NewServoDriver(raspiAdaptor, servoXpin)
-var servoY = gpio.NewServoDriver(raspiAdaptor, servoYpin)
 
 func main() {
 

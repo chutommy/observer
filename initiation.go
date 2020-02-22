@@ -5,12 +5,16 @@ import (
 	"image"
 	"math"
 	"time"
+
+	"gobot.io/x/gobot/drivers/gpio"
 )
 
 // define changeable varibles
 var midRect image.Rectangle
 var midPoint image.Point
 var pxsPerDegree float64
+var servoX *gpio.ServoDriver
+var servoY *gpio.ServoDriver
 
 func init() {
 	rbn := flag.String("rbname", robotName, "name of the robot")
@@ -77,4 +81,8 @@ func resetVar() {
 
 	// get number of pixels for 1 degree
 	pxsPerDegree = math.Sqrt(float64(camWidth*camWidth)+float64(camHeight*camHeight)) / angleOfViewDig
+
+	// servos drivers
+	servoX = gpio.NewServoDriver(raspiAdaptor, servoXpin)
+	servoY = gpio.NewServoDriver(raspiAdaptor, servoYpin)
 }
