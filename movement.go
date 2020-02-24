@@ -7,14 +7,14 @@ import (
 	"math"
 )
 
-// current servos
+// current servos statuses
 var currentX = 90
 var currentY = 90
 
-// aimTarget aims target
+// aimTarget aims target by its coordinates
 func aimTarget(coor image.Point) {
 
-	// qualize X axis
+	// equalize X axis
 	angleX := float64(coor.X-midPoint.X) / pxsPerDegree
 	moveCam("axisX", angleX)
 
@@ -26,7 +26,7 @@ func aimTarget(coor image.Point) {
 // moveCam moves cam on X or Y axis
 func moveCam(direct string, angle float64) {
 
-	// choose direction
+	// choose a direction
 	switch direct {
 
 	// X movement
@@ -78,11 +78,11 @@ func moveCam(direct string, angle float64) {
 			currentY = deltaY
 		}
 
-		fmt.Println("YYY", currentY)
+		// fmt.Println("YYY", currentY)
 	}
 }
 
-// calibrateServos tries both minimum and maximum of servos
+// calibrateServos tries both minimum and maximum of servos and then certers them
 func calibrateServos() {
 	log.Printf("Calibrating servomotors ...\n")
 	centerServos()
@@ -93,7 +93,7 @@ func calibrateServos() {
 	centerServos()
 }
 
-// centerServos set servos to default postion
+// centerServos set servos to the default postion
 func centerServos() {
 	servoX.Center()
 	servoY.Center()

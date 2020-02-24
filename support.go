@@ -5,7 +5,7 @@ import (
 	"log"
 )
 
-// getNearestObject return the reactangle with the highest area
+// getNearestObject returns a rectangle with the highest area
 func getNearestObject(objects []image.Rectangle) (int, image.Rectangle) {
 	switch l := len(objects); l {
 	case 0:
@@ -16,7 +16,6 @@ func getNearestObject(objects []image.Rectangle) (int, image.Rectangle) {
 		return nearestObject(objects)
 	}
 }
-
 func nearestObject(rects []image.Rectangle) (int, image.Rectangle) {
 	nearest := 0
 	maxArea := 0
@@ -28,7 +27,6 @@ func nearestObject(rects []image.Rectangle) (int, image.Rectangle) {
 			maxArea = area
 		}
 	}
-
 	return nearest, rects[nearest]
 }
 
@@ -42,7 +40,7 @@ func getCoordinates(rect image.Rectangle) image.Point {
 	}
 }
 
-// reducePeriod reduces periods time if it is too low
+// reducePeriod reduces period time if it is too low
 func reducePeriod() {
 	reduced := 1000 / maxFPS
 	log.Printf("Reducing period from %v to %v (max. FPS) ...", period, reduced)

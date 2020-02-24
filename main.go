@@ -12,58 +12,65 @@ import (
 	"gocv.io/x/gocv"
 )
 
-// cams frames var img atomic.Value
+// variable that cam stores its frames into
 var img atomic.Value
 
-// idle
+// idle variables
 var idleTime = time.Now()
 var idleStatus = false
 var centered = false
 
-// connection
+// raspberry pi adaptor (on boot)
 var raspiAdaptor = raspi.NewAdaptor()
+
+// a window variable
+var window *opencv.WindowDriver
 
 // camera driver
 var camera = opencv.NewCameraDriver(cameraSource)
 
 func main() {
 
-	// work func
+	// only if window is enabled
+	if windowed {
+		window = opencv.NewWindowDriver()
+	}
+
+	// func which robot does
 	work := func() {
 
+		// creating a surface for frames
 		mat := gocv.NewMat()
 		defer mat.Close()
-
-		// store mat to img
 		img.Store(mat)
 
-		// turn camera on
+		// camera capturing
 		camera.On(opencv.Frame, func(data interface{}) {
 			i := data.(gocv.Mat)
 			// store i to img
 			img.Store(i)
 		})
 
-		// calibration
+		// calibration at start if it is enabled
 		if calibration {
 			calibrateServos()
 		}
 
-		// aplying max FPS
+		// limit period according to maxFPS
 		if 1000/period > maxFPS {
 			reducePeriod()
 		}
 
-		// loop
+		// main loop every {period}ns
 		gobot.Every(period*time.Millisecond, func() {
 
-			//load an image
+			//load the frame from img
 			i := img.Load().(gocv.Mat)
 			if i.Empty() {
 				return
 			}
 
-			// scan for objects
+			// scan for objects using cascade
 			objects := opencv.DetectObjects(cascade, i)
 
 			// get a target's rectangle
@@ -71,12 +78,12 @@ func main() {
 
 			if (target != image.Rectangle{}) {
 
-				// draw without target + target
+				// draw notarget objects + the target
 				objectsNoTarget := append(objects[:index], objects[(index+1):]...)
 				drawRects(i, []image.Rectangle{target}, targetColor)
 				drawRects(i, objectsNoTarget, otherColor)
 
-				// idle reset
+				// idle reset, suspend the counter
 				if idleStatus {
 					idleStatus = false
 				}
@@ -84,7 +91,7 @@ func main() {
 				// get a target's coordinate
 				lock := getCoordinates(target)
 
-				// aim if not in rectangle
+				// aim the target if it is not in the middle rectangle
 				if !lock.In(midRect) {
 					aimTarget(lock)
 				}
@@ -99,7 +106,7 @@ func main() {
 
 				} else if !centered {
 
-					// get the time difference
+					// get the time difference, if idle too long - reset
 					if time.Now().Sub(idleTime).Seconds() >= idleDuration {
 						centerServos()
 						centered = true
@@ -107,14 +114,27 @@ func main() {
 					}
 				}
 			}
+
+			// show window
+			if windowed {
+				drawRects(i, []image.Rectangle{midRect}, midRectColor)
+				window.ShowImage(i)
+				window.WaitKey(1)
+			}
+
 		})
 	}
 
-	// variables
+	// define adaptors and devices
 	connections := []gobot.Connection{raspiAdaptor}
 	devices := []gobot.Device{camera, servoX, servoY}
 
-	// set robot
+	// adds window if window is enabled
+	if windowed {
+		devices = append(devices, window)
+	}
+
+	// set robot atributes
 	robot := gobot.NewRobot(
 		robotName,
 		connections,

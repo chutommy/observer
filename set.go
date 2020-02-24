@@ -4,6 +4,8 @@ import (
 	"time"
 )
 
+// DEFAULT SETTINGS
+
 // ==============================
 // ROBOT ========================
 
@@ -49,6 +51,11 @@ var invertY bool = false
 
 var calibrateX float64 = 1
 var calibrateY float64 = 1
+
+// ==============================
+// COLORS =======================
+
+var windowed bool = false
 
 // ==============================
 // COLORS =======================

@@ -13,6 +13,7 @@ type cusColor struct {
 }
 
 // drawRects draw rects with a cusColor
+// available only if window is enabled
 func drawRects(img gocv.Mat, rects []image.Rectangle, col cusColor) {
 	opencv.DrawRectangles(img, rects, col.r, col.g, col.b, col.thickness)
 }

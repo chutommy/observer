@@ -9,7 +9,7 @@ import (
 	"gobot.io/x/gobot/drivers/gpio"
 )
 
-// define changeable varibles
+// define variables that might change
 var midRect image.Rectangle
 var midPoint image.Point
 var pxsPerDegree float64
@@ -34,6 +34,8 @@ func init() {
 	invy := flag.Bool("inverty", invertY, "invert Y aiming")
 	calibx := flag.Float64("calibx", calibrateX, "calibrate X")
 	caliby := flag.Float64("caliby", calibrateY, "calibrate Y")
+	// window enabling
+	wnd := flag.Bool("window", windowed, "enable window (ONLY IF DISPLAY IS AVAILABLE)")
 	flag.Parse()
 
 	robotName = *rbn
@@ -53,13 +55,14 @@ func init() {
 	invertY = *invy
 	calibrateX = *calibx
 	calibrateY = *caliby
+	windowed = *wnd
 
 	resetVar()
 }
 
 func resetVar() {
 
-	// declare mid of aim
+	// declare the center of the aiming screen
 	midPoint = image.Point{
 		X: camWidth / 2,
 		Y: camHeight / 2,
@@ -75,14 +78,12 @@ func resetVar() {
 		int(float64(midPoint.X) + float64(camWidth)*half),
 		int(float64(midPoint.Y) + float64(camWidth)*half),
 	}
-
-	// geting safe area
 	midRect = image.Rectangle{minPoint, maxPoint}
 
 	// get number of pixels for 1 degree
 	pxsPerDegree = math.Sqrt(float64(camWidth*camWidth)+float64(camHeight*camHeight)) / angleOfViewDig
 
-	// servos drivers
+	// initiate servo drivers
 	servoX = gpio.NewServoDriver(raspiAdaptor, servoXpin)
 	servoY = gpio.NewServoDriver(raspiAdaptor, servoYpin)
 }
