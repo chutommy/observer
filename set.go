@@ -55,7 +55,7 @@ var calibrateY float64 = 1
 // ==============================
 // COLORS =======================
 
-var windowed bool = true
+var windowed bool = false
 
 // ==============================
 // COLORS =======================
