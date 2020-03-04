@@ -32,7 +32,7 @@ func moveCam(direct string, angle float64) {
 	// X movement
 	case "axisX":
 
-		// X invert/calibrate
+		// invert/calibrate
 		if invertX {
 			angle = -angle
 		}
@@ -52,7 +52,7 @@ func moveCam(direct string, angle float64) {
 			servoX.Move(uint8(deltaX))
 			currentX = deltaX
 		}
-		fmt.Println("XXX", currentX)
+		fmt.Println("XXX", currentX) // DEL
 
 	// Y movement
 	case "axisY":
@@ -78,7 +78,7 @@ func moveCam(direct string, angle float64) {
 			currentY = deltaY
 		}
 
-		// fmt.Println("YYY", currentY)
+		// fmt.Println("YYY", currentY) // DEL
 	}
 }
 

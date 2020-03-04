@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"log"
 )
@@ -11,9 +12,11 @@ func getNearestObject(objects []image.Rectangle) (int, image.Rectangle) {
 	case 0:
 		return -1, image.Rectangle{}
 	case 1:
+		fmt.Printf("Detect faces: %v\n", l) // DEL
 		return 0, objects[0]
 	default:
-		return nearestObject(objects)
+		fmt.Printf("Detect faces: %v\n", l)
+		return nearestObject(objects) // DEL
 	}
 }
 func nearestObject(rects []image.Rectangle) (int, image.Rectangle) {

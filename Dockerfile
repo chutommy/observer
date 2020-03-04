@@ -1,8 +1,8 @@
-FROM ubuntu
-RUN apt-get update -y
-RUN apt-get upgrade -y
+#FROM debian
+#RUN apt-get update -y
+#RUN apt-get upgrade -y
 # enable a neccesary package for camera using opencv
-RUN apt-get install -y libv4l-dev
+#RUN apt-get install -y libv4l-dev
 
 FROM denismakogon/gocv-alpine:4.0.1-buildstage
 # gobot and gocv packages
