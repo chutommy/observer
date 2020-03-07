@@ -37,7 +37,7 @@ var period time.Duration = 40
 // ==============================
 // TARGETING ====================
 
-var aimArea float64 = 0.15
+var aimArea float64 = 0.18
 
 var idleDuration float64 = 12
 
