@@ -23,16 +23,16 @@ var servoYpin string = "2"
 
 var cameraSource int = 0
 
-var camWidth int = 1920
-var camHeight int = 1080
+var camWidth int = 640
+var camHeight int = 480
 
-var angleOfViewDig float64 = 69.1
+var angleOfViewDig float64 = 79.05
 var maxFPS time.Duration = 30
 
 // ==============================
 // PERFORMANCE ==================
 
-var period time.Duration = 40
+var period time.Duration = 45
 
 // ==============================
 // TARGETING ====================
