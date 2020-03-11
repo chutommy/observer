@@ -17,8 +17,8 @@ var servos = piblaster.Blaster{}
 
 func init() {
 	rbn := flag.String("rbname", robotName, "name of the robot")
-	csc1 := flag.String("cascade", cascade1, "path to cascade")
-	csc2 := flag.String("cascade", cascade2, "path to cascade (optional)")
+	csc1 := flag.String("cascade 1", cascade1, "path to cascade")
+	csc2 := flag.String("cascade 2", cascade2, "path to cascade (optional)")
 	srvx := flag.Int64("servox", servoXpin, "GPIO pin of servo controlling X axis (not the pin number)")
 	srvy := flag.Int64("servoy", servoYpin, "GPIO pin of servo controlling Y axis (not the pin number)")
 	cams := flag.Int("camsource", cameraSource, "camera source")
