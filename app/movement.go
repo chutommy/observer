@@ -4,6 +4,7 @@ import (
 	"image"
 	"log"
 	"math"
+	"time"
 )
 
 // current servos states
@@ -38,16 +39,16 @@ func moveCam(direct string, angle float64) {
 		angle *= calibrateX
 
 		// movement selection X
-		switch deltaX := currentX + int(math.Round(angle)); {
-		case deltaX > 180:
+		switch newX := currentX + int(math.Round(angle)); {
+		case newX > 180:
 			setServo("X", 180)
 			currentX = 180
-		case deltaX < 0:
+		case newX < 0:
 			setServo("X", 0)
 			currentX = 0
 		default:
-			setServo("X", deltaX)
-			currentX = deltaX
+			setServo("X", newX)
+			currentX = newX
 		}
 
 	// Y movement
@@ -60,16 +61,16 @@ func moveCam(direct string, angle float64) {
 		angle *= calibrateY
 
 		// movement selection Y
-		switch deltaY := currentY + int(math.Round(angle)); {
-		case deltaY > 180:
+		switch newY := currentY + int(math.Round(angle)); {
+		case newY > 180:
 			setServo("Y", 180)
 			currentY = 180
-		case deltaY < 0:
+		case newY < 0:
 			setServo("Y", 0)
 			currentY = 0
 		default:
-			setServo("Y", deltaY)
-			currentY = deltaY
+			setServo("Y", newY)
+			currentY = newY
 		}
 	}
 }
@@ -78,12 +79,15 @@ func moveCam(direct string, angle float64) {
 func calibrateServos() {
 	log.Printf("Calibrating servomotors ...\n")
 	centerServos()
+	time.Sleep(380 * time.Millisecond)
 	setServo("X", 0)
 	setServo("Y", 0)
-	// WAIT
+	time.Sleep(380 * time.Millisecond)
 	setServo("X", 180)
 	setServo("Y", 180)
+	time.Sleep(760 * time.Millisecond)
 	centerServos()
+	time.Sleep(380 * time.Millisecond)
 }
 
 // set servos to the default postion
