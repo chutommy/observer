@@ -12,7 +12,7 @@ import (
 var robotName string = "Observing Robot"
 
 var cascade1 string = "data/frontalface_default.xml"
-var cascade2 string = "data/profileface.xml"
+var cascade2 string = ""
 
 // ==============================
 // SERVOS
