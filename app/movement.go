@@ -78,12 +78,12 @@ func moveCam(direct string, angle float64) {
 // try both minimum and maximum of servos and then centers them
 func calibrateServos() {
 	log.Printf("Calibrating servomotors ...\n")
-	centerServos()
-	time.Sleep(380 * time.Millisecond)
 	setServo("X", 0)
+	time.Sleep(380 * time.Millisecond)
 	setServo("Y", 0)
 	time.Sleep(380 * time.Millisecond)
 	setServo("X", 180)
+	time.Sleep(760 * time.Millisecond)
 	setServo("Y", 180)
 	time.Sleep(760 * time.Millisecond)
 	centerServos()
