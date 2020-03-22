@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"image"
-	"math"
 	"time"
 
 	piblaster "github.com/ddrager/go-pi-blaster"
@@ -12,7 +11,8 @@ import (
 // define variables that might change and make them global
 var midRect image.Rectangle
 var midPoint image.Point
-var pxsPerDegree float64
+var pxsPerDegreeVer float64
+var pxsPerDegreeHor float64
 var servos = piblaster.Blaster{}
 
 func init() {
@@ -24,7 +24,8 @@ func init() {
 	cams := flag.Int("camsource", cameraSource, "camera source")
 	camw := flag.Int("camwidth", camWidth, "camera width")
 	camh := flag.Int("camheight", camHeight, "camera height")
-	aov := flag.Float64("angleov", angleOfViewDig, "camera's diagonal angle of view")
+	aovhor := flag.Float64("angleovh", angleOfViewHor, "camera's horizontal angle of view")
+	aovver := flag.Float64("angleovv", angleOfViewVer, "camera's vertical angle of view")
 	mfps := flag.Int64("maxfps", int64(maxFPS), "camera's maximal FPS")
 	prd := flag.Int64("period", int64(period), "speed of shooting in ns")
 	aima := flag.Float64("aimarea", aimArea, "aim area (0-0%, 1-100%)")
@@ -46,7 +47,8 @@ func init() {
 	cameraSource = *cams
 	camWidth = *camw
 	camHeight = *camh
-	angleOfViewDig = *aov
+	angleOfViewHor = *aovhor
+	angleOfViewVer = *aovver
 	maxFPS = time.Duration(*mfps)
 	period = time.Duration(*prd)
 	aimArea = *aima
@@ -82,7 +84,8 @@ func resetVar() {
 	midRect = image.Rectangle{minPoint, maxPoint}
 
 	// get number of pixels for 1 degree
-	pxsPerDegree = math.Sqrt(float64(camWidth*camWidth)+float64(camHeight*camHeight)) / angleOfViewDig
+	pxsPerDegreeHor = float64(camWidth) / angleOfViewHor
+	pxsPerDegreeVer = float64(camHeight) / angleOfViewVer
 
 	// initiate servo drivers
 	servos.Start([]int64{servoXpin, servoYpin})

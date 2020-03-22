@@ -28,7 +28,8 @@ var cameraSource int = 0
 var camWidth int = 640
 var camHeight int = 480
 
-var angleOfViewDig float64 = 79.058
+var angleOfViewHor float64 = 62.2
+var angleOfViewVer float64 = 48.8
 var maxFPS time.Duration = 60
 
 // ==============================
@@ -46,10 +47,10 @@ var idleDuration float64 = 6
 // ==============================
 // CALIBRATION ==================
 
-var calibration bool = false
+var calibration bool = true
 
-var invertX bool = false
-var invertY bool = false
+var invertX bool = true
+var invertY bool = true
 
 var calibrateX float64 = 1
 var calibrateY float64 = 1

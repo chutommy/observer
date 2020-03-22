@@ -15,11 +15,11 @@ var currentY = 90
 func aimTarget(coor image.Point) {
 
 	// equalize X axis
-	angleX := float64(coor.X-midPoint.X) / pxsPerDegree
+	angleX := float64(coor.X-midPoint.X) / pxsPerDegreeHor
 	moveCam("axisX", angleX)
 
 	// equalize Y axis
-	angleY := float64(coor.Y-midPoint.Y) / pxsPerDegree
+	angleY := float64(coor.Y-midPoint.Y) / pxsPerDegreeVer
 	moveCam("axisY", angleY)
 }
 

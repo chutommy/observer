@@ -51,8 +51,10 @@ func main() {
 			img.Store(i)
 		})
 
+		// init center
 		centerServos()
 		time.Sleep(381 * time.Millisecond)
+
 		// calibrate servos if enabled
 		if calibration {
 			calibrateServos()
