@@ -69,6 +69,7 @@ func init() {
 func moveServo(angle, mils int) {
 	a := float64(angle)/900 + 0.05
 	servos.Apply(pin1, a)
+	time.Sleep(time.Duration(mils) * time.Millisecond)
 	servos.Apply(pin2, a)
 	time.Sleep(time.Duration(mils) * time.Millisecond)
 }
