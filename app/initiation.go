@@ -14,32 +14,36 @@ var midPoint image.Point
 var pxsPerDegreeVer float64
 var pxsPerDegreeHor float64
 var servos = piblaster.Blaster{}
+var tolerationX float64
+var tolerationY float64
+var tolerationXr float64
+var tolerationYr float64
 
 func init() {
-	rbn := flag.String("rbname", robotName, "name of the robot")
-	csc1 := flag.String("cascade 1", cascade1, "path to cascade")
-	csc2 := flag.String("cascade 2", cascade2, "path to cascade (optional)")
-	srvx := flag.Int64("servox", servoXpin, "GPIO pin of servo controlling X axis (not the pin number)")
-	srvy := flag.Int64("servoy", servoYpin, "GPIO pin of servo controlling Y axis (not the pin number)")
+	csc1 := flag.String("casc1", cascade1, "path to cascade")
+	csc2 := flag.String("casc2", cascade2, "path to cascade (optional)")
+	srvx := flag.Int64("servox", servoXpin, "GPIO pin of servoX (not the pin number)")
+	srvy := flag.Int64("servoy", servoYpin, "GPIO pin of servoY (not the pin number)")
 	cams := flag.Int("camsource", cameraSource, "camera source")
 	camw := flag.Int("camwidth", camWidth, "camera width")
 	camh := flag.Int("camheight", camHeight, "camera height")
 	aovhor := flag.Float64("angleovh", angleOfViewHor, "camera's horizontal angle of view")
 	aovver := flag.Float64("angleovv", angleOfViewVer, "camera's vertical angle of view")
-	mfps := flag.Int64("maxfps", int64(maxFPS), "camera's maximal FPS")
-	prd := flag.Int64("period", int64(period), "speed of shooting in ns")
-	aima := flag.Float64("aimarea", aimArea, "aim area (0-0%, 1-100%)")
-	idldur := flag.Float64("idledur", idleDuration, "duration of not detecting faces")
+	mfps := flag.Int64("maxfps", int64(maxFPS), "camera's max FPS")
+	prd := flag.Int64("period", int64(period), "speed of the loop (ns)")
+	aima := flag.Float64("aimarea", aimArea, "aim area (1~100%)")
+	idldur := flag.Float64("idledur", idleDuration, "time until reset (sec)")
 	calib := flag.Bool("calib", calibration, "calibration on start")
-	invx := flag.Bool("invertx", invertX, "invert X aiming")
-	invy := flag.Bool("inverty", invertY, "invert Y aiming")
-	calibx := flag.Float64("calibx", calibrateX, "calibrate X")
-	caliby := flag.Float64("caliby", calibrateY, "calibrate Y")
-	// window enabling
-	wnd := flag.Bool("window", windowed, "enable window (ONLY IF DISPLAY IS AVAILABLE) - ensure VNC or HDMI output")
+	invx := flag.Bool("invertx", invertX, "invert X")
+	invy := flag.Bool("inverty", invertY, "invert Y")
+	calibx := flag.Float64("calibx", calibrateX, "calibrate X (1~100%)")
+	caliby := flag.Float64("caliby", calibrateY, "calibrate Y (1~100%)")
+	tx := flag.Float64("tolx", tolerateX, "toleration of X (1~100%)")
+	ty := flag.Float64("toly", tolerateY, "toleration of Y (1~100%)")
+	// window enable
+	wnd := flag.Bool("window", windowed, "enable window (ONLY IF DISPLAY OUTPUT IS AVAILABLE) - ensure VNC or HDMI output")
 	flag.Parse()
 
-	robotName = *rbn
 	cascade1 = *csc1
 	cascade2 = *csc2
 	servoXpin = *srvx
@@ -58,6 +62,8 @@ func init() {
 	invertY = *invy
 	calibrateX = *calibx
 	calibrateY = *caliby
+	tolerateX = *tx
+	tolerateY = *ty
 	windowed = *wnd
 
 	resetVar()
@@ -82,6 +88,12 @@ func resetVar() {
 		int(float64(midPoint.Y) + float64(camWidth)*half),
 	}
 	midRect = image.Rectangle{minPoint, maxPoint}
+
+	// get toleration
+	tolerationX = (float64(midRect.Dx()) / 2) * tolerateX
+	tolerationY = (float64(midRect.Dy()) / 2) * tolerateY
+	tolerationXr -= tolerationX
+	tolerationYr -= tolerationY
 
 	// get number of pixels for 1 degree
 	pxsPerDegreeHor = float64(camWidth) / angleOfViewHor

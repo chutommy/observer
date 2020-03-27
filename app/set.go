@@ -9,7 +9,7 @@ import (
 // ==============================
 // ROBOT ========================
 
-var robotName string = "Observing Robot"
+var robotName string = "CHU_R201"
 
 var cascade1 string = "data/frontalface_default.xml"
 var cascade2 string = ""
@@ -55,8 +55,8 @@ var invertY bool = true
 var calibrateX float64 = 1
 var calibrateY float64 = 1
 
-// ==============================
-// COLORS =======================
+var tolerateX float64 = 1
+var tolerateY float64 = 1
 
 var windowed bool = false
 
