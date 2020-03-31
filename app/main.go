@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"image"
+	"log"
 	"sync/atomic"
 	"time"
 
@@ -64,6 +65,9 @@ func main() {
 		if 1000/period > maxFPS {
 			reducePeriod()
 		}
+
+		time.Sleep(2 * time.Second)
+		log.Println("Observing start running ...")
 
 		// main loop every {period}ns
 		gobot.Every(period*time.Millisecond, func() {
