@@ -1,0 +1,42 @@
+# github.com/ddrager/go-pi-blaster v0.0.0-20161201190348-609f01fedcc9
+## explicit
+github.com/ddrager/go-pi-blaster
+# github.com/gobuffalo/uuid v2.0.5+incompatible
+github.com/gobuffalo/uuid
+# github.com/gofrs/uuid v3.2.0+incompatible
+github.com/gofrs/uuid
+# github.com/hashicorp/errwrap v1.0.0
+github.com/hashicorp/errwrap
+# github.com/hashicorp/go-multierror v1.0.0
+github.com/hashicorp/go-multierror
+# github.com/pkg/errors v0.8.1
+github.com/pkg/errors
+# github.com/sigurn/crc8 v0.0.0-20160107002456-e55481d6f45c
+github.com/sigurn/crc8
+# github.com/sigurn/utils v0.0.0-20190728110027-e1fefb11a144
+github.com/sigurn/utils
+# gobot.io/x/gobot v1.14.0
+## explicit
+gobot.io/x/gobot
+gobot.io/x/gobot/drivers/gpio
+gobot.io/x/gobot/drivers/i2c
+gobot.io/x/gobot/drivers/spi
+gobot.io/x/gobot/platforms/opencv
+gobot.io/x/gobot/platforms/raspi
+gobot.io/x/gobot/sysfs
+# gocv.io/x/gocv v0.23.0
+## explicit
+gocv.io/x/gocv
+# periph.io/x/periph v3.6.2+incompatible
+periph.io/x/periph
+periph.io/x/periph/conn
+periph.io/x/periph/conn/gpio
+periph.io/x/periph/conn/gpio/gpioreg
+periph.io/x/periph/conn/i2c
+periph.io/x/periph/conn/i2c/i2creg
+periph.io/x/periph/conn/physic
+periph.io/x/periph/conn/pin
+periph.io/x/periph/conn/spi
+periph.io/x/periph/conn/spi/spireg
+periph.io/x/periph/host/fs
+periph.io/x/periph/host/sysfs
