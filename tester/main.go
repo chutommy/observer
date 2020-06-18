@@ -1,4 +1,4 @@
-package main
+package test
 
 import (
 	"flag"
@@ -15,7 +15,8 @@ const pin2 = 18
 
 var center, calibrate, test bool
 
-func main() {
+// Test tests of the movement is OK
+func Test() {
 	servos.Start([]int64{pin1, pin2})
 
 	time.Sleep(600 * time.Millisecond)

@@ -20,6 +20,8 @@ var tolerationXr float64
 var tolerationYr float64
 
 func init() {
+	// user variables manipulation
+
 	csc1 := flag.String("casc1", cascade1, "path to cascade")
 	csc2 := flag.String("casc2", cascade2, "path to cascade (optional)")
 	srvx := flag.Int64("servox", servoXpin, "GPIO pin of servoX (not the pin number)")
