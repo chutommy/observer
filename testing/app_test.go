@@ -3,6 +3,7 @@ package test
 import (
 	"flag"
 	"fmt"
+	"testing"
 	"time"
 
 	piblaster "github.com/ddrager/go-pi-blaster"
@@ -16,7 +17,7 @@ const pin2 = 18
 var center, calibrate, test bool
 
 // Test tests of the movement is OK
-func Test() {
+func TestApp(t *testing.T) {
 	servos.Start([]int64{pin1, pin2})
 
 	time.Sleep(600 * time.Millisecond)
@@ -28,11 +29,8 @@ func Test() {
 
 	if calibrate {
 		moveServo(90, 390)
-
-		moveServo(0, 390)
-
-		moveServo(180, 780)
-
+		moveServo(30, 390)
+		moveServo(150, 780)
 		moveServo(90, 390)
 	}
 
@@ -44,10 +42,6 @@ func Test() {
 		moveServo(130, 400)
 		moveServo(30, 450)
 		moveServo(150, 500)
-		moveServo(10, 550)
-		moveServo(170, 600)
-		moveServo(0, 650)
-		moveServo(180, 700)
 		moveServo(90, 400)
 	}
 
