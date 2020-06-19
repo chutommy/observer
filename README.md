@@ -46,4 +46,4 @@ And then type `./observer -h` for the help.
 </p>
 <br>
 
-More at https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing.
+To see more, click <a href="https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing" target="_blank">here</a>.
