@@ -43,6 +43,7 @@ func TestApp(t *testing.T) {
 		moveServo(30, 450)
 		moveServo(150, 500)
 		moveServo(90, 400)
+		moveServo(180, 700)
 	}
 
 	fmt.Println("ABOUT TO EXIT ...")
