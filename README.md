@@ -21,13 +21,19 @@ The observer uses these to run properly:
   
 ## Instalation
 
-On Raspberry Pi (CPU ARMv6+) with `go` and `opencv4` installed run:
+On Raspberry Pi (CPU ARMv6+) with `go`, `opencv4`, `gocv` and `gobot` installed run this:
 
 ```bash
 $ go get github.com/chutified/observer
 ```
 
-And then type `./observer -h` for the help.
+Or get `install.sh` file and run this in the same location to install all depencies and the Observer software:
+
+```bash
+$ ./install
+```
+
+Type `./observer -h` for the help.
 
 *(tested on Raspbian OS with Raspberry Pi 3B+)*
 
