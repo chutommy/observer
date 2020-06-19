@@ -19,7 +19,7 @@ The observer uses these to run properly:
   * GoCV v0.23.0 with OpenCV v4.3.0 (https://gocv.io/)
   * HaarCascade (https://github.com/opencv/opencv)
   
-## Instalation
+## Installation
 
 On Raspberry Pi (CPU ARMv6+) with `go`, `opencv4`, `gocv` and `gobot` installed run this:
 
