@@ -24,7 +24,7 @@ The observer uses these dependencies to run properly:
 On Raspberry Pi (CPU ARMv6+) with `go`, `opencv4`, `gocv` and `gobot` installed run this:
 
 ```bash
-$ go get github.com/chutified/observer
+$ go get github.com/chutified/observer-rpi
 ```
 
 Or get `install.sh` file and run this in the same location to install all dependencies and the Observer software (can take up to 15 minutes, depends on the performance):
