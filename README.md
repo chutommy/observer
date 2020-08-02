@@ -5,11 +5,10 @@
 </p>
 <br>
 
-The Observer is a software for a face recognition and face tracking. This software is a part of a six-month school project.
-
+The Observer is a software for a face recognition and face tracking.
 The application should be able to fully and reliably control the movement of the camera using two 180° servomotors in a half-space. For the recognition it uses the HaarCascades that are located in the `data` directory. All variables are editable (for more information, run the application with the `--help` flag).
 
-The final work is available at https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing.
+The other part of this project is available at https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing.
 
 ## Dependencies
 
