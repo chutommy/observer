@@ -20,7 +20,7 @@ The observer uses these dependencies to run properly:
   
 ## Installation
 
-On Raspberry Pi (CPU ARMv6+) with `go`, `opencv4`, `gocv` and `gobot` installed run this:
+On Raspberry Pi (CPU ARMv6+), with `go`, `opencv4`, `gocv` and `gobot` installed, run this:
 
 ```bash
 $ go get github.com/chutified/observer-rpi
