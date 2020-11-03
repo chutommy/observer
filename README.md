@@ -6,7 +6,7 @@
 <br>
 
 The Observer is a software for a face recognition and face tracking.
-The application should be able to fully and reliably control the movement of the camera using two 180° servomotors in a half-space. For the recognition it uses the HaarCascades that are located in the `data` directory. All variables are editable (for more information, run the application with the `--help` flag).
+The application should be able to fully and reliably control the movement of the camera using two 180° servomotors in a half-space. For the recognition the HaarCascades from official OpenCV GitHub repo are used. All variables are configurable (for more information, run the application with the `--help` flag).
 
 The other part of this project is available at https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing.
 
@@ -20,13 +20,13 @@ The observer uses these dependencies to run properly:
   
 ## Installation
 
-On Raspberry Pi (CPU ARMv6+), with `go`, `opencv4`, `gocv` and `gobot` installed, run this:
+On Raspberry Pi (CPU ARMv6+), with `go`, `opencv4`, `gocv` and `gobot` installed, run this command to install executable file into your PATH:
 
 ```bash
 $ go get github.com/chutified/observer-rpi
 ```
 
-Or get `install.sh` file and run this in the same location to install all dependencies and the Observer software (can take up to 15 minutes, depends on the performance):
+Or you can also get `install.sh` file and run it in the project folder to install all dependencies and the Observer software (can take up to 15 minutes, depends on the performance):
 
 ```bash
 $ ./install
