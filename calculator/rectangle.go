@@ -4,45 +4,45 @@ import (
 	"image"
 )
 
-// NearestRect returns an index of the nearest rectangle in the selection.
-func NearestRect(rects []image.Rectangle) int {
-	switch len(rects) {
-	case 0:
-		return -1 // no rectangles
-	case 1:
-		return 0 // one rectangle
-	default:
-		return greatArea(rects) // multiple rectangles
+// Object is anything that is detected by the observer.
+type Object struct {
+	rect image.Rectangle
+}
+
+// Objects represents slice of Objects.
+type Objects []*Object
+
+// FromRect constructs an Object from a rectangle.
+func FromRect(rect image.Rectangle) *Object {
+	return &Object{
+		rect: rect,
 	}
 }
 
-// greatArea returns an index of the rectangle with the greatest area value.
-func greatArea(rects []image.Rectangle) int {
-	var maxIdx, maxArea int
+// FromRects constructs a slice of Objects from the given slice of rectangles.
+func FromRects(rects []image.Rectangle) Objects {
+	objects := make(Objects, len(rects))
 
 	for i, rect := range rects {
-		a := area(rect)
-
-		if a > maxArea {
-			maxIdx = i
-			maxArea = a
+		objects[i] = &Object{
+			rect: rect,
 		}
 	}
 
-	return maxIdx
+	return objects
 }
 
-// area calculates the area of the rectangle.
-func area(r image.Rectangle) int {
-	return r.Dx() * r.Dy()
+// area calculates the area of the Object.
+func (o *Object) area() int {
+	return o.rect.Dx() * o.rect.Dy()
 }
 
-// Center calculates a Center of the rectangle.
-func Center(r image.Rectangle) image.Point {
-	min := r.Min
-	max := r.Max
+// Center calculates a center point of the Object.
+func (o *Object) Center() image.Point {
+	min := o.rect.Min
+	max := o.rect.Max
 
-	// calculate mid on axis
+	// calculate the mid point of the axis
 	midX := (min.X + max.X) / 2
 	midY := (min.Y + max.Y) / 2
 
@@ -50,4 +50,33 @@ func Center(r image.Rectangle) image.Point {
 		X: midX,
 		Y: midY,
 	}
+}
+
+// NearestObject returns an index of the nearest Object in the selection.
+func NearestObject(objects Objects) int {
+	switch len(objects) {
+	case 0:
+		return -1 // no objects
+	case 1:
+		return 0 // one objects
+	default:
+		return greatArea(objects) // multiple objects
+	}
+}
+
+// greatArea returns an index of the Object with the greatest area value.
+func greatArea(objects Objects) int {
+	var maxIdx, maxArea int
+
+	for i, object := range objects {
+		a := object.area()
+
+		if a > maxArea {
+			// greater area
+			maxIdx = i
+			maxArea = a
+		}
+	}
+
+	return maxIdx
 }

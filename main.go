@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"image"
+	"image/color"
 	"log"
 	"sync/atomic"
 	"time"
@@ -81,23 +81,37 @@ func main() {
 			}
 
 			// scan for objects
-			objects := opencv.DetectObjects(cascade1, i)
+			rects := opencv.DetectObjects(cascade1, i)
+			objects := calculator.FromRects(rects)
 
 			// if second cascade (optional)
 			if cascade2 != "" {
-				objects = append(objects, opencv.DetectObjects(cascade2, i)...)
+				// objects = append(objects, opencv.DetectObjects(cascade2, i)...)
+				rects = opencv.DetectObjects(cascade2, i)
+				objects = append(objects, calculator.FromRects(rects)...)
 			}
 
 			// get the target's index and rectangle
-			targetX := calculator.NearestRect(objects)
+			targetX := calculator.NearestObject(objects)
 			target := objects[targetX]
 
 			if targetX != -1 {
 
-				// draw non-target objects + the target
-				objectsNonTarget := append(objects[:targetX], objects[(targetX+1):]...)
-				drawRects(i, []image.Rectangle{target}, targetColor)
-				drawRects(i, objectsNonTarget, otherColor)
+				// draw the target
+				otherObjects := append(objects[:targetX], objects[(targetX+1):]...)
+				target.Draw(&i, color.RGBA{
+					R: uint8(targetColor.r),
+					G: uint8(targetColor.g),
+					B: uint8(targetColor.b),
+					A: 0,
+				}, targetColor.thickness)
+				// draw non-target objects
+				otherObjects.Draw(&i, color.RGBA{
+					R: uint8(otherColor.r),
+					G: uint8(otherColor.g),
+					B: uint8(otherColor.b),
+					A: 0,
+				}, otherColor.thickness)
 
 				// reset idle and suspend the counter
 				if idleStatus {
@@ -105,7 +119,7 @@ func main() {
 				}
 
 				// get a target's coordinate
-				lock := calculator.Center(target)
+				lock := target.Center()
 
 				// aim the target if it is not in the middle rectangle
 				if !lock.In(midRect) {
@@ -133,7 +147,15 @@ func main() {
 
 			// show window
 			if windowed {
-				drawRects(i, []image.Rectangle{midRect}, midRectColor)
+
+				// draw a mid rect
+				calculator.FromRect(midRect).Draw(&i, color.RGBA{
+					R: uint8(midRectColor.r),
+					G: uint8(midRectColor.g),
+					B: uint8(midRectColor.b),
+					A: 0,
+				}, midRectColor.thickness)
+
 				window.ShowImage(i)
 				window.WaitKey(1)
 			}
