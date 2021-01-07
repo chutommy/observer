@@ -11,6 +11,7 @@ import (
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
 	"gocv.io/x/gocv"
+	"observer/calculator"
 )
 
 // frames
@@ -88,14 +89,15 @@ func main() {
 			}
 
 			// get the target's index and rectangle
-			index, target := getNearestObject(objects)
+			targetX := calculator.NearestRect(objects)
+			target := objects[targetX]
 
-			if index != -1 {
+			if targetX != -1 {
 
-				// draw notarget objects + the target
-				objectsNoTarget := append(objects[:index], objects[(index+1):]...)
+				// draw non-target objects + the target
+				objectsNonTarget := append(objects[:targetX], objects[(targetX+1):]...)
 				drawRects(i, []image.Rectangle{target}, targetColor)
-				drawRects(i, objectsNoTarget, otherColor)
+				drawRects(i, objectsNonTarget, otherColor)
 
 				// reset idle and suspend the counter
 				if idleStatus {
@@ -103,7 +105,7 @@ func main() {
 				}
 
 				// get a target's coordinate
-				lock := getCoordinates(target)
+				lock := calculator.Center(target)
 
 				// aim the target if it is not in the middle rectangle
 				if !lock.In(midRect) {
