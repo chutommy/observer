@@ -11,7 +11,7 @@ import (
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
 	"gocv.io/x/gocv"
-	"observer/calculator"
+	"observer/geometry"
 )
 
 // frames
@@ -82,17 +82,17 @@ func main() {
 
 			// scan for objects
 			rects := opencv.DetectObjects(cascade1, i)
-			objects := calculator.FromRects(rects)
+			objects := geometry.FromRects(rects)
 
 			// if second cascade (optional)
 			if cascade2 != "" {
 				// objects = append(objects, opencv.DetectObjects(cascade2, i)...)
 				rects = opencv.DetectObjects(cascade2, i)
-				objects = append(objects, calculator.FromRects(rects)...)
+				objects = append(objects, geometry.FromRects(rects)...)
 			}
 
 			// get the target's index and rectangle
-			targetX := calculator.NearestObject(objects)
+			targetX := geometry.NearestObject(objects)
 			target := objects[targetX]
 
 			if targetX != -1 {
@@ -149,7 +149,7 @@ func main() {
 			if windowed {
 
 				// draw a mid rect
-				calculator.FromRect(midRect).Draw(&i, color.RGBA{
+				geometry.FromRect(midRect).Draw(&i, color.RGBA{
 					R: uint8(midRectColor.r),
 					G: uint8(midRectColor.g),
 					B: uint8(midRectColor.b),
