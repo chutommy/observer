@@ -31,6 +31,7 @@ var window *opencv.WindowDriver
 var camera = opencv.NewCameraDriver(cameraSource)
 
 func main() {
+
 	// enable window driver
 	if windowed {
 		window = opencv.NewWindowDriver()
@@ -52,7 +53,8 @@ func main() {
 		})
 
 		// init center
-		centerServos()
+		//centerServos()
+		moveLittleUp()
 		time.Sleep(381 * time.Millisecond)
 
 		// calibrate servos if enabled
@@ -136,15 +138,16 @@ func main() {
 
 		})
 	}
-	work := botWork(camera, window)
 
 	// define adaptors and devices
 	connections := []gobot.Connection{raspiAdaptor}
 	devices := []gobot.Device{camera}
+
 	// adds window if window is enabled
 	if windowed {
 		devices = append(devices, window)
 	}
+
 	// set robot atributes
 	robot := gobot.NewRobot(
 		robotName,
@@ -152,5 +155,6 @@ func main() {
 		devices,
 		work,
 	)
+
 	robot.Start()
 }

@@ -47,12 +47,12 @@ func moveCam(direct string, angle float64) {
 
 		// movement selection X
 		switch newX := currentX + int(math.Round(angle)); {
-		case newX > 150:
-			setServo("X", 150)
-			currentX = 150
-		case newX < 30:
-			setServo("X", 30)
-			currentX = 30
+		case newX > 180:
+			setServo("X", 180)
+			currentX = 180
+		case newX < 0:
+			setServo("X", 0)
+			currentX = 0
 		default:
 			setServo("X", newX)
 			currentX = newX
@@ -69,12 +69,12 @@ func moveCam(direct string, angle float64) {
 
 		// movement selection Y
 		switch newY := currentY + int(math.Round(angle)); {
-		case newY > 150:
-			setServo("Y", 150)
-			currentY = 150
-		case newY < 30:
-			setServo("Y", 30)
-			currentY = 30
+		case newY > 180:
+			setServo("Y", 180)
+			currentY = 180
+		case newY < 0:
+			setServo("Y", 0)
+			currentY = 0
 		default:
 			setServo("Y", newY)
 			currentY = newY
@@ -85,13 +85,13 @@ func moveCam(direct string, angle float64) {
 // try both minimum and maximum of servos and then centers them
 func calibrateServos() {
 	log.Printf("Calibrating servomotors ...\n")
-	setServo("X", 30)
+	setServo("X", 0)
 	time.Sleep(380 * time.Millisecond)
-	setServo("Y", 30)
+	setServo("Y", 0)
 	time.Sleep(380 * time.Millisecond)
-	setServo("X", 150)
+	setServo("X", 180)
 	time.Sleep(760 * time.Millisecond)
-	setServo("Y", 150)
+	setServo("Y", 180)
 	time.Sleep(760 * time.Millisecond)
 	centerServos()
 	time.Sleep(380 * time.Millisecond)
@@ -105,6 +105,14 @@ func centerServos() {
 	currentX = 90
 	currentY = 90
 	// WAIT
+}
+
+func moveLittleUp() {
+	log.Printf("Centering servos ...\n")
+	setServo("X", 90)
+	setServo("Y", 130)
+	currentX = 90
+	currentY = 130
 }
 
 // move the servo to the angle

@@ -47,13 +47,13 @@ var idleDuration float64 = 6
 // ==============================
 // CALIBRATION ==================
 
-var calibration bool = true
+var calibration bool = false
 
 var invertX bool = true
 var invertY bool = true
 
-var calibrateX float64 = 1
-var calibrateY float64 = 1
+var calibrateX float64 = 0.7
+var calibrateY float64 = 0.5
 
 var tolerateX float64 = 1
 var tolerateY float64 = 1
