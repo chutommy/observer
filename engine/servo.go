@@ -77,3 +77,22 @@ func (s *servo) set(angle int) {
 	// change/apply PWD signal
 	s.blaster.Apply(s.pin, a)
 }
+
+// move changes the angle of the servo.
+// Respect the maximum/minimum range.
+func (s *servo) move(angle float64) {
+	// calibration (+ inversion)
+	angle *= s.calibration
+
+	// movement range
+	newAngle := s.degreeStatus + int(math.Round(angle))
+
+	switch {
+	case newAngle < minDegree:
+		s.set(minDegree)
+	case newAngle > maxDegree:
+		s.set(maxDegree)
+	default:
+		s.set(newAngle)
+	}
+}
