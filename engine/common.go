@@ -15,16 +15,8 @@ func (ss *servos) Center() {
 	ss.servoY.center()
 }
 
-// Calibrate tries the range for the Servo.
-func (s *Servo) Calibrate() {
-	s.set(minDegree)
-	time.Sleep(800 * time.Millisecond)
-	s.set(maxDegree)
-	time.Sleep(800 * time.Millisecond)
-}
-
-// Calibrate calibrates both Servo.
-func (ss *ServoXY) Calibrate() {
+// Calibrate calibrates servos.
+func (ss *servos) Calibrate() {
 	ss.Center()
 	time.Sleep(400 * time.Millisecond)
 
