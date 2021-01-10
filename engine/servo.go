@@ -1,6 +1,8 @@
 package engine
 
 import (
+	"math"
+
 	blaster "github.com/ddrager/go-pi-blaster"
 )
 
@@ -9,38 +11,52 @@ const (
 	maxDegree = 180
 )
 
-// Servo represents a single Servo engine controller.
-type Servo struct {
+// servo represents a single servo engine controller.
+type servo struct {
 	blaster      blaster.Blaster
 	degreeStatus int
 	pin          int64
+
+	calibration  float64
+	midPoint     int
+	toleration   float64
+	pxsPerDegree float64
 }
 
-// NewServo is a constructor of the Servo.
-func NewServo(b blaster.Blaster, pin int64) *Servo {
+// NewServo is a constructor of the servo.
+func NewServo(blaster blaster.Blaster, pin int64, inverted bool, calibration float64, midPoint int, toleration float64, pxsPerDegree float64) *servo {
+	// set calibration for inversion
+	if inverted {
+		calibration = -calibration
+	}
+
 	// construct
-	s := &Servo{
-		blaster:      b,
+	s := &servo{
+		blaster:      blaster,
 		degreeStatus: 90,
 		pin:          pin,
+		calibration:  calibration,
+		midPoint:     midPoint,
+		toleration:   toleration,
+		pxsPerDegree: pxsPerDegree,
 	}
 
 	// center
-	s.Center()
+	s.center()
 
 	return s
 }
 
-// ServoXY represent a duo of Servo.
-type ServoXY struct {
-	servoX *Servo
-	servoY *Servo
+// servos represent a duo of servo.
+type servos struct {
+	servoX *servo
+	servoY *servo
 }
 
-// NewServoXY is a constructor of the ServoXY.
-func NewServoXY(sX, sY *Servo) *ServoXY {
+// NewServos is a constructor of the servos.
+func NewServos(sX, sY *servo) *servos {
 	// construct
-	ss := &ServoXY{
+	ss := &servos{
 		servoX: sX,
 		servoY: sY,
 	}
@@ -51,8 +67,8 @@ func NewServoXY(sX, sY *Servo) *ServoXY {
 	return ss
 }
 
-// set sets the Servo to the specific angle.
-func (s *Servo) set(angle int) {
+// set sets the servo to the specific angle.
+func (s *servo) set(angle int) {
 	s.degreeStatus = angle
 
 	// PWD calculation
