@@ -11,6 +11,7 @@ import (
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
 	"gocv.io/x/gocv"
+	"observer/engine"
 	"observer/geometry"
 )
 
@@ -53,14 +54,18 @@ func main() {
 			img.Store(i)
 		})
 
+		// initialize servos
+		servoX := engine.NewServo(servos, servoXpin, invertX, calibrateX, midPoint.X, tolerationX, pxsPerDegreeHor)
+		servoY := engine.NewServo(servos, servoYpin, invertY, calibrateY, midPoint.Y, tolerationY, pxsPerDegreeVer)
+		servoXY := engine.NewServos(servoX, servoY)
+
 		// init center
-		//centerServos()
-		moveLittleUp()
+		servoXY.CenterMiddleUp()
 		time.Sleep(381 * time.Millisecond)
 
 		// calibrate servos if enabled
 		if calibration {
-			calibrateServos()
+			servoXY.Calibrate()
 		}
 
 		// limit period according to maxFPS
@@ -123,7 +128,7 @@ func main() {
 
 				// aim the target if it is not in the middle rectangle
 				if !lock.In(midRect) {
-					aimTarget(lock)
+					servoXY.Aim(lock)
 				}
 
 			} else {
@@ -139,7 +144,7 @@ func main() {
 					// get the time difference, if idle too long - reset
 					if time.Now().Sub(idleTime).Seconds() >= idleDuration {
 						fmt.Println("Idle to long ...")
-						centerServos()
+						servoXY.Center()
 						centered = true
 					}
 				}
