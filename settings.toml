@@ -1,0 +1,61 @@
+# Settings for the Observer
+
+[calibration]
+  calibrateonstart = false # immediate calibration after launching the observer
+
+  [calibration.coefficient] # coefficient of the movement
+    x = 0.7
+    y = 0.5
+
+  [calibration.invert] # invert servo movement
+    x = true
+    y = true
+
+  [calibration.tolerate] # modification of the focusing area
+    x = 1
+    y = 1
+
+[camera]
+  maxfps = 60 # maximal capable FPS of the camera
+  source = 0 # camera source index
+
+  [camera.angleofview] # angle of view of the camera
+    horizontal = 62.2
+    vertical = 48.8
+
+  [camera.frame] # camera resolution
+    height = 480
+    width = 640
+
+[general]
+  idleduration = 6 # duration (in seconds) before reseting the camera angles
+  period = 30 # cycle delay in milliseconds
+  show = false # show the live preview of the frames
+
+[servos] # PWM pins of the servos
+  pinx = 17
+  piny = 18
+
+[targeting]
+  aimarea = 0.15 # ratio of the focusing area
+  cascades = ["data/frontalface_default.xml"] # list of applied cascades
+
+  [targeting.color]
+
+    [targeting.color.midrect] # focusing area rectangle
+      blue = 160
+      green = 20
+      red = 20
+      thickness = 1
+
+    [targeting.color.other] # other rectangles
+      blue = 30
+      green = 100
+      red = 20
+      thickness = 2
+
+    [targeting.color.target] # target rectangle
+      blue = 30
+      green = 30
+      red = 200
+      thickness = 2
