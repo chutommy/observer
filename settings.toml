@@ -3,7 +3,7 @@
 [calibration]
   calibrateonstart = false # immediate calibration after launching the observer
 
-  [calibration.coefficient] # coefficient of the movement
+  [calibration.coefficient] # coefficient of the movement (0~1)
     x = 0.7
     y = 0.5
 
@@ -30,15 +30,15 @@
 [general]
   idleduration = 6 # duration (in seconds) before reseting the camera angles
   period = 30 # cycle delay in milliseconds
-  show = false # show the live preview of the frames
+  show = false # show the live preview of the frames (IMPORTANT: only if display output is available)
 
-[servos] # PWM pins of the servos
+[servos] # GPIO PWM pins of the servos (IMPORTANT: NOT the pin numbers)
   pinx = 17
   piny = 18
 
 [targeting]
-  aimarea = 0.15 # ratio of the focusing area
-  cascades = ["data/frontalface_default.xml"] # list of applied cascades
+  aimarea = 0.15 # ratio of the focusing area (0~1)
+  cascades = ["data/frontalface_default.xml"] # list of paths to cascades to apply
 
   [targeting.color]
 
