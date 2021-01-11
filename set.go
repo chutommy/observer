@@ -9,10 +9,8 @@ import (
 // ==============================
 // ROBOT ========================
 
-var robotName string = "CHU_R201"
-
-var cascade1 string = "data/frontalface_default.xml"
-var cascade2 string = ""
+var cascade1 = "data/frontalface_default.xml"
+var cascade2 = ""
 
 // ==============================
 // SERVOS
@@ -23,13 +21,13 @@ var servoYpin int64 = 18
 // ==============================
 // CAMERA =======================
 
-var cameraSource int = 0
+var cameraSource = 0
 
-var camWidth int = 640
-var camHeight int = 480
+var camWidth = 640
+var camHeight = 480
 
-var angleOfViewHor float64 = 62.2
-var angleOfViewVer float64 = 48.8
+var angleOfViewHor = 62.2
+var angleOfViewVer = 48.8
 var maxFPS time.Duration = 60
 
 // ==============================
@@ -40,25 +38,25 @@ var period time.Duration = 30
 // ==============================
 // TARGETING ====================
 
-var aimArea float64 = 0.15
+var aimArea = 0.15
 
 var idleDuration float64 = 6
 
 // ==============================
 // CALIBRATION ==================
 
-var calibration bool = false
+var calibration = false
 
-var invertX bool = true
-var invertY bool = true
+var invertX = true
+var invertY = true
 
-var calibrateX float64 = 0.7
-var calibrateY float64 = 0.5
+var calibrateX = 0.7
+var calibrateY = 0.5
 
 var tolerateX float64 = 1
 var tolerateY float64 = 1
 
-var windowed bool = false
+var windowed = false
 
 // ==============================
 // COLORS =======================

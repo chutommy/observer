@@ -15,6 +15,8 @@ import (
 	"observer/geometry"
 )
 
+const robotName = "Observer"
+
 // frames
 var img atomic.Value
 
