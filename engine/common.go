@@ -4,19 +4,19 @@ import (
 	"time"
 )
 
-// center centres the servo to 90 degree.
-func (s *servo) center() {
+// center centres the Servo to 90 degree.
+func (s *Servo) center() {
 	s.set(90)
 }
 
-// Center centres a servos.
-func (ss *servos) Center() {
+// Center centres a Servos.
+func (ss *Servos) Center() {
 	ss.servoX.center()
 	ss.servoY.center()
 }
 
-// Calibrate calibrates servos.
-func (ss *servos) Calibrate() {
+// Calibrate calibrates Servos.
+func (ss *Servos) Calibrate() {
 	ss.Center()
 	time.Sleep(400 * time.Millisecond)
 
@@ -36,8 +36,8 @@ func (ss *servos) Calibrate() {
 	time.Sleep(400 * time.Millisecond)
 }
 
-// CenterMiddleUp set servos to the default position.
-func (ss *servos) CenterMiddleUp() {
+// CenterMiddleUp set Servos to the default position.
+func (ss *Servos) CenterMiddleUp() {
 	ss.servoX.center()
 	ss.servoY.set(135)
 }

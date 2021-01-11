@@ -4,9 +4,9 @@ import (
 	"image"
 )
 
-// Aim moves the servos to make sure that the given point lies
+// Aim moves the Servos to make sure that the given point lies
 // in the tolerable rectangle area.
-func (ss *servos) Aim(point image.Point) {
+func (ss *Servos) Aim(point image.Point) {
 	sx := ss.servoX
 	sy := ss.servoY
 

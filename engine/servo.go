@@ -11,8 +11,8 @@ const (
 	maxDegree = 180
 )
 
-// servo represents a single servo engine controller.
-type servo struct {
+// Servo represents a single Servo engine controller.
+type Servo struct {
 	blaster      blaster.Blaster
 	degreeStatus int
 	pin          int64
@@ -23,15 +23,15 @@ type servo struct {
 	pxsPerDegree float64
 }
 
-// NewServo is a constructor of the servo.
-func NewServo(blaster blaster.Blaster, pin int64, inverted bool, calibration float64, midPoint int, toleration float64, pxsPerDegree float64) *servo {
+// NewServo is a constructor of the Servo.
+func NewServo(blaster blaster.Blaster, pin int64, inverted bool, calibration float64, midPoint int, toleration float64, pxsPerDegree float64) *Servo {
 	// set calibration for inversion
 	if inverted {
 		calibration = -calibration
 	}
 
 	// construct
-	s := &servo{
+	s := &Servo{
 		blaster:      blaster,
 		degreeStatus: 90,
 		pin:          pin,
@@ -47,16 +47,16 @@ func NewServo(blaster blaster.Blaster, pin int64, inverted bool, calibration flo
 	return s
 }
 
-// servos represent a duo of servo.
-type servos struct {
-	servoX *servo
-	servoY *servo
+// Servos represent a duo of Servo.
+type Servos struct {
+	servoX *Servo
+	servoY *Servo
 }
 
-// NewServos is a constructor of the servos.
-func NewServos(sX, sY *servo) *servos {
+// NewServos is a constructor of the Servos.
+func NewServos(sX, sY *Servo) *Servos {
 	// construct
-	ss := &servos{
+	ss := &Servos{
 		servoX: sX,
 		servoY: sY,
 	}
@@ -67,8 +67,8 @@ func NewServos(sX, sY *servo) *servos {
 	return ss
 }
 
-// set sets the servo to the specific angle.
-func (s *servo) set(angle int) {
+// set sets the Servo to the specific angle.
+func (s *Servo) set(angle int) {
 	s.degreeStatus = angle
 
 	// PWD calculation
@@ -78,9 +78,9 @@ func (s *servo) set(angle int) {
 	s.blaster.Apply(s.pin, a)
 }
 
-// move changes the angle of the servo.
+// move changes the angle of the Servo.
 // Respect the maximum/minimum range.
-func (s *servo) move(angle float64) {
+func (s *Servo) move(angle float64) {
 	// calibration (+ inversion)
 	angle *= s.calibration
 
