@@ -55,12 +55,3 @@ var calibrateY = 0.5
 
 var tolerateX float64 = 1
 var tolerateY float64 = 1
-
-var windowed = false
-
-// ==============================
-// COLORS =======================
-
-var targetColor = cusColor{200, 30, 30, 2}
-var otherColor = cusColor{20, 100, 30, 2}
-var midRectColor = cusColor{20, 20, 160, 1}

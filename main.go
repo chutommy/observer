@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"image/color"
 	"log"
 	"sync/atomic"
 	"time"
@@ -11,6 +10,7 @@ import (
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
 	"gocv.io/x/gocv"
+	"observer/config"
 	"observer/engine"
 	"observer/geometry"
 )
@@ -36,8 +36,36 @@ var camera = opencv.NewCameraDriver(cameraSource)
 
 func main() {
 
+	// load configuration
+	cfg, err := config.GetConfig(".")
+	if err != nil {
+		if err != config.ErrSettingsNotFound {
+			log.Fatal(err)
+		}
+	}
+
+	// set colors
+	colorTarget := geometry.NewColor(
+		cfg.Targeting.Color.Target.Red,
+		cfg.Targeting.Color.Target.Green,
+		cfg.Targeting.Color.Target.Blue,
+		cfg.Targeting.Color.Target.Thickness,
+	)
+	colorOther := geometry.NewColor(
+		cfg.Targeting.Color.Other.Red,
+		cfg.Targeting.Color.Other.Green,
+		cfg.Targeting.Color.Other.Blue,
+		cfg.Targeting.Color.Other.Thickness,
+	)
+	colorMidRect := geometry.NewColor(
+		cfg.Targeting.Color.MidRect.Red,
+		cfg.Targeting.Color.MidRect.Green,
+		cfg.Targeting.Color.MidRect.Blue,
+		cfg.Targeting.Color.MidRect.Thickness,
+	)
+
 	// enable window driver
-	if windowed {
+	if cfg.General.Show {
 		window = opencv.NewWindowDriver()
 	}
 
@@ -105,20 +133,11 @@ func main() {
 			if targetX != -1 {
 
 				// draw the target
-				otherObjects := append(objects[:targetX], objects[(targetX+1):]...)
-				target.Draw(&i, color.RGBA{
-					R: uint8(targetColor.r),
-					G: uint8(targetColor.g),
-					B: uint8(targetColor.b),
-					A: 0,
-				}, targetColor.thickness)
+				target.Draw(&i, colorTarget.ToRGBA(), colorTarget.T())
+
 				// draw non-target objects
-				otherObjects.Draw(&i, color.RGBA{
-					R: uint8(otherColor.r),
-					G: uint8(otherColor.g),
-					B: uint8(otherColor.b),
-					A: 0,
-				}, otherColor.thickness)
+				otherObjects := append(objects[:targetX], objects[(targetX+1):]...)
+				otherObjects.Draw(&i, colorOther.ToRGBA(), colorOther.T())
 
 				// reset idle and suspend the counter
 				if idleStatus {
@@ -153,15 +172,10 @@ func main() {
 			}
 
 			// show window
-			if windowed {
+			if cfg.General.Show {
 
 				// draw a mid rect
-				geometry.FromRect(midRect).Draw(&i, color.RGBA{
-					R: uint8(midRectColor.r),
-					G: uint8(midRectColor.g),
-					B: uint8(midRectColor.b),
-					A: 0,
-				}, midRectColor.thickness)
+				geometry.FromRect(midRect).Draw(&i, colorMidRect.ToRGBA(), colorMidRect.T())
 
 				window.ShowImage(i)
 				window.WaitKey(1)
@@ -175,7 +189,7 @@ func main() {
 	devices := []gobot.Device{camera}
 
 	// adds window if window is enabled
-	if windowed {
+	if cfg.General.Show {
 		devices = append(devices, window)
 	}
 
