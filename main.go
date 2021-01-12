@@ -81,7 +81,7 @@ func main() {
 		time.Sleep(381 * time.Millisecond)
 
 		// calibrate servos if enabled
-		if calibration {
+		if cfg.Calibration.CalibrateOnStart {
 			servoXY.Calibrate()
 		}
 
@@ -135,7 +135,7 @@ func main() {
 				lock := target.Center()
 
 				// aim the target if it is not in the middle rectangle
-				if !lock.In(midRect) {
+				if !lock.In(ocfg.MidRect) {
 					servoXY.Aim(lock)
 				}
 
@@ -150,7 +150,7 @@ func main() {
 				} else if !centered {
 
 					// get the time difference, if idle too long - reset
-					if time.Now().Sub(idleTime).Seconds() >= idleDuration {
+					if time.Now().Sub(idleTime).Seconds() >= cfg.General.IdleDuration {
 						fmt.Println("Idle to long ...")
 						servoXY.Center()
 						centered = true
@@ -162,7 +162,7 @@ func main() {
 			if cfg.General.Show {
 
 				// draw a mid rect
-				geometry.FromRect(midRect).Draw(&i, ocfg.Colors.MidRect.ToRGBA(), ocfg.Colors.MidRect.T())
+				geometry.FromRect(ocfg.MidRect).Draw(&i, ocfg.Colors.MidRect.ToRGBA(), ocfg.Colors.MidRect.T())
 
 				window.ShowImage(i)
 				window.WaitKey(1)

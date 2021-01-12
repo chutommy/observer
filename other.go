@@ -6,11 +6,6 @@ import (
 
 // TODO implement others
 
-// color type.
-type cusColor struct {
-	r, g, b, thickness int
-}
-
 // reduce the period by the camera's max FPS property.
 func reducePeriod() {
 	reduced := (1000 / maxFPS) + 1

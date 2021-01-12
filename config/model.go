@@ -11,9 +11,9 @@ type Config struct {
 
 // General is a configuration of the Observer's runtime.
 type General struct {
-	Show         bool `toml:"show"`
-	Period       int  `toml:"period"`
-	IdleDuration int  `toml:"idleDuration"`
+	Show         bool    `toml:"show"`
+	Period       int     `toml:"period"`
+	IdleDuration float64 `toml:"idleDuration"`
 }
 
 // Servos stores Servo's GPIO pin numbers.
