@@ -4,6 +4,7 @@ import (
 	"math"
 
 	blaster "github.com/ddrager/go-pi-blaster"
+	"observer/observerconfig"
 )
 
 const (
@@ -24,21 +25,21 @@ type Servo struct {
 }
 
 // NewServo is a constructor of the Servo.
-func NewServo(blaster blaster.Blaster, pin int64, inverted bool, calibration float64, midPoint int, toleration float64, pxsPerDegree float64) *Servo {
+func NewServo(blaster blaster.Blaster, servo *observerconfig.Servo) *Servo {
 	// set calibration for inversion
-	if inverted {
-		calibration = -calibration
+	if servo.Inverted {
+		servo.Calibration *= -1
 	}
 
 	// construct
 	s := &Servo{
 		blaster:      blaster,
 		degreeStatus: 90,
-		pin:          pin,
-		calibration:  calibration,
-		midPoint:     midPoint,
-		toleration:   toleration,
-		pxsPerDegree: pxsPerDegree,
+		pin:          servo.Pin,
+		calibration:  servo.Calibration,
+		midPoint:     servo.MidPoint,
+		toleration:   servo.Toleration,
+		pxsPerDegree: servo.PxsPerDegree,
 	}
 
 	// center

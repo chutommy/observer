@@ -14,6 +14,7 @@ import (
 	"observer/config"
 	"observer/engine"
 	"observer/geometry"
+	"observer/observerconfig"
 )
 
 const robotName = "Observer"
@@ -47,25 +48,8 @@ func main() {
 		}
 	}
 
-	// set colors
-	colorTarget := geometry.NewColor(
-		cfg.Targeting.Color.Target.Red,
-		cfg.Targeting.Color.Target.Green,
-		cfg.Targeting.Color.Target.Blue,
-		cfg.Targeting.Color.Target.Thickness,
-	)
-	colorOther := geometry.NewColor(
-		cfg.Targeting.Color.Other.Red,
-		cfg.Targeting.Color.Other.Green,
-		cfg.Targeting.Color.Other.Blue,
-		cfg.Targeting.Color.Other.Thickness,
-	)
-	colorMidRect := geometry.NewColor(
-		cfg.Targeting.Color.MidRect.Red,
-		cfg.Targeting.Color.MidRect.Green,
-		cfg.Targeting.Color.MidRect.Blue,
-		cfg.Targeting.Color.MidRect.Thickness,
-	)
+	// load observer configuration
+	ocfg := observerconfig.LoadObserverConfig(cfg)
 
 	// enable window driver
 	if cfg.General.Show {
@@ -88,8 +72,8 @@ func main() {
 		})
 
 		// initialize servos
-		servoX := engine.NewServo(servos, servoXpin, invertX, calibrateX, midPoint.X, tolerationX, pxsPerDegreeHor)
-		servoY := engine.NewServo(servos, servoYpin, invertY, calibrateY, midPoint.Y, tolerationY, pxsPerDegreeVer)
+		servoX := engine.NewServo(servos, ocfg.ServoX)
+		servoY := engine.NewServo(servos, ocfg.ServoY)
 		servoXY := engine.NewServos(servoX, servoY)
 
 		// init center
@@ -136,11 +120,11 @@ func main() {
 			if targetX != -1 {
 
 				// draw the target
-				target.Draw(&i, colorTarget.ToRGBA(), colorTarget.T())
+				target.Draw(&i, ocfg.Colors.Target.ToRGBA(), ocfg.Colors.Target.T())
 
 				// draw non-target objects
 				otherObjects := append(objects[:targetX], objects[(targetX+1):]...)
-				otherObjects.Draw(&i, colorOther.ToRGBA(), colorOther.T())
+				otherObjects.Draw(&i, ocfg.Colors.Other.ToRGBA(), ocfg.Colors.Other.T())
 
 				// reset idle and suspend the counter
 				if idleStatus {
@@ -178,7 +162,7 @@ func main() {
 			if cfg.General.Show {
 
 				// draw a mid rect
-				geometry.FromRect(midRect).Draw(&i, colorMidRect.ToRGBA(), colorMidRect.T())
+				geometry.FromRect(midRect).Draw(&i, ocfg.Colors.MidRect.ToRGBA(), ocfg.Colors.MidRect.T())
 
 				window.ShowImage(i)
 				window.WaitKey(1)
