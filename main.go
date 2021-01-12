@@ -102,14 +102,10 @@ func main() {
 				return
 			}
 
-			// scan for objects
-			rects := opencv.DetectObjects(cascade1, i)
-			objects := geometry.FromRects(rects)
-
-			// if second cascade (optional)
-			if cascade2 != "" {
-				// objects = append(objects, opencv.DetectObjects(cascade2, i)...)
-				rects = opencv.DetectObjects(cascade2, i)
+			// scan for objects (query the given haar cascades)
+			objects := make(geometry.Objects, 0)
+			for _, haar := range cfg.Targeting.Cascades {
+				rects := opencv.DetectObjects(haar, i)
 				objects = append(objects, geometry.FromRects(rects)...)
 			}
 

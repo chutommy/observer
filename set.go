@@ -4,14 +4,6 @@ import (
 	"time"
 )
 
-// DEFAULT SETTINGS
-
-// ==============================
-// ROBOT ========================
-
-var cascade1 = "data/frontalface_default.xml"
-var cascade2 = ""
-
 // ==============================
 // SERVOS
 
