@@ -96,8 +96,8 @@ type Coefficient struct {
 
 // Tolerate modifies the focus area.
 type Tolerate struct {
-	X int `toml:"x"`
-	Y int `toml:"y"`
+	X float64 `toml:"x"`
+	Y float64 `toml:"y"`
 }
 
 // Calibration stores the settings of the coefficients for optimized and smooth movements.
