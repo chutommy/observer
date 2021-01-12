@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"sync/atomic"
@@ -39,7 +40,9 @@ func main() {
 	// load configuration
 	cfg, err := config.GetConfig(".")
 	if err != nil {
-		if err != config.ErrSettingsNotFound {
+		if errors.Is(err, config.ErrSettingsNotFound) {
+			log.Println("settings file not found, a default settings is generated and being used...")
+		} else {
 			log.Fatal(err)
 		}
 	}
