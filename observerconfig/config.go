@@ -14,6 +14,11 @@ type ObserverConfig struct {
 	ServoX   *Servo
 	ServoY   *Servo
 	Colors   *Colors
+
+	Show             bool
+	CalibrateOnStart bool
+	Haar             []string
+	MaxIdleDuration  float64
 }
 
 // LoadObserverConfig generates an ObserverConfig and loads required attributes.
@@ -25,6 +30,7 @@ func LoadObserverConfig(cfg *config.Config) *ObserverConfig {
 	rc.loadServoX(cfg)
 	rc.loadServoY(cfg)
 	rc.loadColors(cfg)
+	rc.loadGeneral(cfg)
 
 	return rc
 }
@@ -91,4 +97,12 @@ func (rc *ObserverConfig) loadColors(cfg *config.Config) {
 		Other:   geometry.NewColor(o.Red, o.Green, o.Blue, o.Thickness),
 		MidRect: geometry.NewColor(m.Red, m.Green, m.Blue, m.Thickness),
 	}
+}
+
+// loadGeneral sets general variables.
+func (rc *ObserverConfig) loadGeneral(cfg *config.Config) {
+	rc.Show = cfg.General.Show
+	rc.CalibrateOnStart = cfg.Calibration.CalibrateOnStart
+	rc.Haar = cfg.Targeting.Cascades
+	rc.MaxIdleDuration = cfg.General.IdleDuration
 }

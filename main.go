@@ -52,7 +52,7 @@ func main() {
 	ocfg := observerconfig.LoadObserverConfig(cfg)
 
 	// enable window driver
-	if cfg.General.Show {
+	if ocfg.Show {
 		window = opencv.NewWindowDriver()
 	}
 
@@ -81,7 +81,7 @@ func main() {
 		time.Sleep(381 * time.Millisecond)
 
 		// calibrate servos if enabled
-		if cfg.Calibration.CalibrateOnStart {
+		if ocfg.CalibrateOnStart {
 			servoXY.Calibrate()
 		}
 
@@ -104,7 +104,7 @@ func main() {
 
 			// scan for objects (query the given haar cascades)
 			objects := make(geometry.Objects, 0)
-			for _, haar := range cfg.Targeting.Cascades {
+			for _, haar := range ocfg.Haar {
 				rects := opencv.DetectObjects(haar, i)
 				objects = append(objects, geometry.FromRects(rects)...)
 			}
@@ -146,7 +146,7 @@ func main() {
 				} else if !centered {
 
 					// get the time difference, if idle too long - reset
-					if time.Now().Sub(idleTime).Seconds() >= cfg.General.IdleDuration {
+					if time.Now().Sub(idleTime).Seconds() >= ocfg.MaxIdleDuration {
 						fmt.Println("Idle to long ...")
 						servoXY.Center()
 						centered = true
@@ -155,7 +155,7 @@ func main() {
 			}
 
 			// show window
-			if cfg.General.Show {
+			if ocfg.Show {
 
 				// draw a mid rect
 				geometry.FromRect(ocfg.MidRect).Draw(&i, ocfg.Colors.MidRect.ToRGBA(), ocfg.Colors.MidRect.T())
@@ -172,7 +172,7 @@ func main() {
 	devices := []gobot.Device{camera}
 
 	// adds window if window is enabled
-	if cfg.General.Show {
+	if ocfg.Show {
 		devices = append(devices, window)
 	}
 
