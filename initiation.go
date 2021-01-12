@@ -14,8 +14,6 @@ var pxsPerDegreeHor float64
 var servos = piblaster.Blaster{}
 var tolerationX float64
 var tolerationY float64
-var tolerationXr float64
-var tolerationYr float64
 
 func resetVar() {
 
@@ -40,8 +38,6 @@ func resetVar() {
 	// get toleration
 	tolerationX = (float64(midRect.Dx()) / 2) * tolerateX
 	tolerationY = (float64(midRect.Dy()) / 2) * tolerateY
-	tolerationXr -= tolerationX
-	tolerationYr -= tolerationY
 
 	// get number of pixels for 1 degree
 	pxsPerDegreeHor = float64(camWidth) / angleOfViewHor
