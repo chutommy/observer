@@ -3,8 +3,9 @@ package engine
 import (
 	"math"
 
-	blaster "github.com/ddrager/go-pi-blaster"
 	"observer/observerconfig"
+
+	blaster "github.com/ddrager/go-pi-blaster"
 )
 
 const (
