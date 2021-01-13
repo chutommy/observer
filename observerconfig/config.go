@@ -19,6 +19,8 @@ type ObserverConfig struct {
 	CalibrateOnStart bool
 	Haar             []string
 	MaxIdleDuration  float64
+	MaxFPS           int
+	Period           int
 }
 
 // LoadObserverConfig generates an ObserverConfig and loads required attributes.
@@ -105,4 +107,6 @@ func (rc *ObserverConfig) loadGeneral(cfg *config.Config) {
 	rc.CalibrateOnStart = cfg.Calibration.CalibrateOnStart
 	rc.Haar = cfg.Targeting.Cascades
 	rc.MaxIdleDuration = cfg.General.IdleDuration
+	rc.MaxFPS = cfg.Camera.MaxFPS
+	rc.Period = cfg.General.Period
 }
