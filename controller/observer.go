@@ -6,6 +6,7 @@ import (
 	blaster "github.com/ddrager/go-pi-blaster"
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
+	"gocv.io/x/gocv"
 	"observer/config"
 	"observer/engine"
 	"observer/observerconfig"
@@ -25,8 +26,9 @@ type Observer struct {
 	blaster blaster.Blaster
 	servos  *engine.Servos
 
-	work        func()
-	activeFrame *atomic.Value
+	work         func()
+	activeFrame  *atomic.Value
+	currentFrame *gocv.Mat
 }
 
 // NewObserver constructs a new Observer controller.
@@ -42,8 +44,9 @@ func NewObserver(name string, cfg *config.Config) *Observer {
 		blaster: blaster.Blaster{},
 		servos:  nil,
 
-		work:        func() {},
-		activeFrame: &atomic.Value{},
+		work:         func() {},
+		activeFrame:  &atomic.Value{}, // live frame
+		currentFrame: &gocv.Mat{},     // last loaded frame
 	}
 
 	o.initWindow()
