@@ -87,7 +87,9 @@ func main() {
 
 		// limit period according to maxFPS
 		if 1000/period > maxFPS {
-			reducePeriod()
+			reduced := (1000 / maxFPS) + 1
+			log.Printf("Reducing period from %v to %v (according to max. FPS) ...", period, reduced)
+			period = reduced
 		}
 
 		time.Sleep(2 * time.Second)
