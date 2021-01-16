@@ -5,6 +5,7 @@ import (
 	"time"
 
 	blaster "github.com/ddrager/go-pi-blaster"
+	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
 	"gocv.io/x/gocv"
@@ -15,6 +16,8 @@ import (
 
 // Observer represents the robot's controller.
 type Observer struct {
+	robot *gobot.Robot
+
 	name string
 	cfg  *observerconfig.ObserverConfig
 
@@ -38,6 +41,8 @@ type Observer struct {
 // NewObserver constructs a new Observer controller.
 func NewObserver(name string, cfg *config.Config) *Observer {
 	o := &Observer{
+		robot: nil,
+
 		name: name,
 		cfg:  observerconfig.LoadObserverConfig(cfg),
 
