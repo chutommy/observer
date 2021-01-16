@@ -13,12 +13,12 @@ func (s *Servo) center() {
 func (ss *Servos) Center() {
 	ss.servoX.center()
 	ss.servoY.center()
+	time.Sleep(400 * time.Millisecond)
 }
 
 // Calibrate calibrates Servos.
 func (ss *Servos) Calibrate() {
 	ss.Center()
-	time.Sleep(400 * time.Millisecond)
 
 	// try minDegree
 	ss.servoX.set(minDegree)
@@ -33,11 +33,11 @@ func (ss *Servos) Calibrate() {
 	time.Sleep(800 * time.Millisecond)
 
 	ss.Center()
-	time.Sleep(400 * time.Millisecond)
 }
 
 // CenterMiddleUp set Servos to the default position.
 func (ss *Servos) CenterMiddleUp() {
 	ss.servoX.center()
 	ss.servoY.set(135)
+	time.Sleep(400 * time.Millisecond)
 }
