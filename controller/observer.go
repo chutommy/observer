@@ -2,6 +2,7 @@ package controller
 
 import (
 	"sync/atomic"
+	"time"
 
 	blaster "github.com/ddrager/go-pi-blaster"
 	"gobot.io/x/gobot/platforms/opencv"
@@ -29,6 +30,9 @@ type Observer struct {
 	work         func()
 	activeFrame  *atomic.Value
 	currentFrame *gocv.Mat
+
+	lastUpdated time.Time
+	idle        bool
 }
 
 // NewObserver constructs a new Observer controller.
