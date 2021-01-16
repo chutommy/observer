@@ -3,10 +3,11 @@ package controller
 import (
 	"time"
 
+	"observer/geometry"
+
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/opencv"
 	"gocv.io/x/gocv"
-	"observer/geometry"
 )
 
 // LoadWork sets a work attribute for the Observer.
@@ -71,7 +72,7 @@ func (o *Observer) observeCycle() {
 		o.servos.Aim(lock)
 	}
 
-	// upadte lastUpdated attribute
+	// update lastUpdated attribute
 	o.lastUpdated = time.Now()
 }
 

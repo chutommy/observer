@@ -1,9 +1,10 @@
 package controller
 
 import (
+	"observer/engine"
+
 	"gobot.io/x/gobot/platforms/opencv"
 	"gocv.io/x/gocv"
-	"observer/engine"
 )
 
 // initWindow sets window driver if Show option is set up.

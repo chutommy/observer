@@ -24,6 +24,7 @@ func main() {
 	// constructs and config the new Observer
 	o := controller.NewObserver(robotName, cfg)
 	o.LoadWork()
+	o.LoadRobot()
 
 	// starts the observer
 	err = o.Start()
@@ -34,6 +35,7 @@ func main() {
 
 // TODO
 // - add logger
+// - testing
 // - refactor readme file
 // - code cleanup (dependencies, haar cascades etc.)
 // - Docker implementation

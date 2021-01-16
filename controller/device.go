@@ -4,7 +4,7 @@ import (
 	"gobot.io/x/gobot"
 )
 
-// LoadRobot loads all required devices for the Rebot.
+// LoadRobot loads all required devices for the Robot.
 func (o *Observer) LoadRobot() {
 	// define adaptors and devices
 	conns := gobot.Connections{o.adaptor}

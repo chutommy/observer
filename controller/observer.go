@@ -4,14 +4,15 @@ import (
 	"sync/atomic"
 	"time"
 
+	"observer/config"
+	"observer/engine"
+	"observer/observerconfig"
+
 	blaster "github.com/ddrager/go-pi-blaster"
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
 	"gocv.io/x/gocv"
-	"observer/config"
-	"observer/engine"
-	"observer/observerconfig"
 )
 
 // Observer represents the robot's controller.
