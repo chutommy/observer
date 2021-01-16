@@ -10,6 +10,7 @@ import (
 // initWindow sets window driver if Show option is set up.
 func (o *Observer) initWindow() {
 	if o.cfg.Show {
+		o.log.Info("Initializing capturing window driver")
 		o.window = opencv.NewWindowDriver()
 	}
 }
@@ -18,6 +19,7 @@ func (o *Observer) initWindow() {
 func (o *Observer) initServos() {
 	o.blaster.Start([]int64{o.cfg.ServoX.Pin, o.cfg.ServoY.Pin})
 
+	o.log.Info("Starting servo motors")
 	servoX := engine.NewServo(o.blaster, o.cfg.ServoX)
 	servoY := engine.NewServo(o.blaster, o.cfg.ServoY)
 	o.servos = engine.NewServos(servoX, servoY)
@@ -30,6 +32,7 @@ func (o *Observer) initCamera() {
 	mat := gocv.NewMat()
 	o.activeFrame.Store(mat)
 
+	o.log.Info("Turning camera on (start recording)")
 	// turn camera on
 	_ = o.camera.On(opencv.Frame, func(data interface{}) {
 		cam := data.(gocv.Mat)
@@ -41,6 +44,9 @@ func (o *Observer) initCamera() {
 // unnecessarily high and unmaintainable, it is automatically reduced.
 func (o *Observer) checkFrequency() {
 	if 1000/o.cfg.Period > o.cfg.MaxFPS {
-		o.cfg.Period = (1000 / o.cfg.MaxFPS) + 1
+		i := (1000 / o.cfg.MaxFPS) + 1
+
+		o.log.Warnf("Period length is too short, extendeding to %d", i)
+		o.cfg.Period = i
 	}
 }

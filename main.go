@@ -35,6 +35,12 @@ func main() {
 		"path":           path,
 	})
 
+	// create a controller entry
+	entryController := log.WithFields(logrus.Fields{
+		"location":   "controller",
+		"robot name": robotName,
+	})
+
 	// load configuration
 	cfg, err := config.GetConfig(entryConfig, path, fileName, extension)
 	if err != nil {
@@ -46,7 +52,7 @@ func main() {
 	}
 
 	// constructs and config the new Observer
-	o := controller.NewObserver(robotName, cfg)
+	o := controller.NewObserver(robotName, entryController, cfg)
 	o.LoadWork()
 	o.LoadRobot()
 
@@ -58,7 +64,6 @@ func main() {
 }
 
 // TODO
-// - add logger
 // - testing
 // - refactor readme file
 // - code cleanup (dependencies, haar cascades etc.)

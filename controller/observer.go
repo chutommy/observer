@@ -9,6 +9,7 @@ import (
 	"observer/observerconfig"
 
 	blaster "github.com/ddrager/go-pi-blaster"
+	"github.com/sirupsen/logrus"
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
@@ -20,6 +21,7 @@ type Observer struct {
 	robot *gobot.Robot
 
 	name string
+	log  *logrus.Entry
 	cfg  *observerconfig.ObserverConfig
 
 	// devices
@@ -40,11 +42,12 @@ type Observer struct {
 }
 
 // NewObserver constructs a new Observer controller.
-func NewObserver(name string, cfg *config.Config) *Observer {
+func NewObserver(name string, log *logrus.Entry, cfg *config.Config) *Observer {
 	o := &Observer{
 		robot: nil,
 
 		name: name,
+		log:  log,
 		cfg:  observerconfig.LoadObserverConfig(cfg),
 
 		adaptor: raspi.NewAdaptor(),
@@ -63,6 +66,8 @@ func NewObserver(name string, cfg *config.Config) *Observer {
 	o.initServos()
 	o.initCamera()
 	o.checkFrequency()
+
+	o.log.Info("Observer internal structure successfully constructed")
 
 	return o
 }

@@ -6,6 +6,8 @@ import (
 
 // LoadRobot loads all required devices for the Robot.
 func (o *Observer) LoadRobot() {
+	o.log.Info("Initiating adaptors and connections")
+
 	// define adaptors and devices
 	conns := gobot.Connections{o.adaptor}
 	devices := gobot.Devices{o.camera}

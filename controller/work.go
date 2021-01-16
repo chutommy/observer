@@ -13,14 +13,20 @@ import (
 // LoadWork sets a work attribute for the Observer.
 func (o *Observer) LoadWork() {
 	o.work = func() {
+		o.log.Info("Starting the Observer")
+
 		// calibrate if set
 		if o.cfg.CalibrateOnStart {
+			o.log.Info("Calibrating before the observing cycle initiation")
+
 			o.servos.Center()
 			o.servos.Calibrate()
 		}
 
 		// center
 		o.servos.CenterMiddleUp()
+
+		o.log.Info("Starting the Observer's cycle")
 
 		// start the observing cycle
 		gobot.Every(time.Duration(o.cfg.Period)*time.Millisecond, func() {
