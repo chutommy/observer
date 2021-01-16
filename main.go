@@ -2,17 +2,41 @@ package main
 
 import (
 	"errors"
-	"log"
+	"os"
 
 	"observer/config"
 	"observer/controller"
+
+	"github.com/sirupsen/logrus"
 )
 
 const robotName = "Observer"
 
+// Define settings file information.
+const (
+	fileName  = "settings"
+	extension = "toml"
+	path      = "."
+)
+
 func main() {
+	// create a new logger instance
+	log := logrus.New()
+	log.SetOutput(os.Stdout)
+	log.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp: true,
+	})
+
+	// create config entry
+	entryConfig := log.WithFields(logrus.Fields{
+		"location":       "configuration",
+		"file name":      fileName,
+		"file extension": extension,
+		"path":           path,
+	})
+
 	// load configuration
-	cfg, err := config.GetConfig(".")
+	cfg, err := config.GetConfig(entryConfig, path, fileName, extension)
 	if err != nil {
 		if errors.Is(err, config.ErrSettingsNotFound) {
 			log.Println("settings file not found, a default settings is generated and being used...")

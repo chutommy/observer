@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
@@ -11,35 +12,43 @@ import (
 var ErrSettingsNotFound = errors.New("settings file not found, default configuration is being generated and used")
 
 // GetConfig gets the configuration file for the observer.
-func GetConfig(path string) (*Config, error) {
+func GetConfig(log *logrus.Entry, path, name, ext string) (*Config, error) {
 	v := viper.New()
 
 	// set default
 	setDefault(v)
 
 	// load from file
-	v.SetConfigName("settings")
-	v.SetConfigType("toml")
+	v.SetConfigName(name)
+	v.SetConfigType(ext)
 	v.AddConfigPath(path)
 
+	log.Info("Searching for a settings file")
 	// read
 	if err := v.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 			cfg, _ := toConfig(v)
 
+			log.Warn("File not found, generating default settings file")
 			// generate file
 			_ = v.SafeWriteConfig()
 
 			return cfg, ErrSettingsNotFound
 		}
 
+		log.Error("Failed to read a settings file")
+
 		return nil, fmt.Errorf("could not read the file: %w", err)
 	}
 
 	cfg, err := toConfig(v)
 	if err != nil {
+		log.Error("Failed to load internal configuration manager")
+
 		return nil, fmt.Errorf("unable to set configuration: %w", err)
 	}
+
+	log.Info("Configuration successfully loaded")
 
 	return cfg, nil
 }
