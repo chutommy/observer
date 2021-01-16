@@ -7,6 +7,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	piblaster "github.com/ddrager/go-pi-blaster"
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/opencv"
 	"gobot.io/x/gobot/platforms/raspi"
@@ -26,6 +27,8 @@ var img atomic.Value
 var idleTime = time.Now()
 var idleStatus = false
 var centered = false
+
+var servos = piblaster.Blaster{}
 
 // raspberry pi adaptor
 var raspiAdaptor = raspi.NewAdaptor()
@@ -55,6 +58,8 @@ func main() {
 	if ocfg.Show {
 		window = opencv.NewWindowDriver()
 	}
+
+	servos.Start([]int64{servoXpin, servoYpin})
 
 	// robot's func
 	work := func() {
