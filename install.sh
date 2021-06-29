@@ -29,7 +29,7 @@ then
 fi
 
 # observer
-go get github.com/chutified/observer
+go get github.com/chutommy/observer
 if [ $? -ne "0" ]
 then
     echo "Could not get Observer"

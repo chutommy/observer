@@ -1,7 +1,7 @@
 # Observer
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/chutified/observer/master/img/00.jpg">
+  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/00.jpg">
 </p>
 <br>
 
@@ -23,7 +23,7 @@ The observer uses these dependencies to run properly:
 On Raspberry Pi (CPU ARMv6+), with `go`, `opencv4`, `gocv` and `gobot` installed, run this command to install executable file into your PATH:
 
 ```bash
-$ go get github.com/chutified/observer-rpi
+$ go get github.com/chutommy/observer-rpi
 ```
 
 Or you can also get `install.sh` file and run it in the project folder to install all dependencies and the Observer software (can take up to 15 minutes, depends on the performance):
@@ -39,15 +39,15 @@ Type `./observer -h` for the help.
 ## Samples
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/chutified/observer/master/img/05.gif">
+  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/05.gif">
 </p>
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/chutified/observer/master/img/04.gif">
+  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/04.gif">
 </p>
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/chutified/observer/master/img/03.gif">
+  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/03.gif">
 </p>
 <br>
 
