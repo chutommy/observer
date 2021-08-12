@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 
-# Install Observer project and all dependencies with go
-
 # gobot
 go get -d -u gobot.io/x/gobot/...
 if [ $? -ne "0" ]
