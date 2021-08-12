@@ -14,7 +14,7 @@ type Servo struct {
 	PxsPerDegree float64
 }
 
-// Colors stores colors of the rectangles.
+// Colors stores colors of rectangles.
 type Colors struct {
 	Target  *geometry.Color
 	Other   *geometry.Color

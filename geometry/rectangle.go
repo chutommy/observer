@@ -4,12 +4,12 @@ import (
 	"image"
 )
 
-// Object is anything that is detected by the observer.
+// Object is detectable by the observer.
 type Object struct {
 	rect image.Rectangle
 }
 
-// Objects represents slice of Objects.
+// Objects represents multiple Objects.
 type Objects []*Object
 
 // FromRect constructs an Object from a rectangle.
@@ -32,7 +32,6 @@ func FromRects(rects []image.Rectangle) Objects {
 	return objects
 }
 
-// area calculates the area of the Object.
 func (o *Object) area() int {
 	return o.rect.Dx() * o.rect.Dy()
 }
@@ -42,7 +41,6 @@ func (o *Object) Center() image.Point {
 	min := o.rect.Min
 	max := o.rect.Max
 
-	// calculate the mid point of the axis
 	midX := (min.X + max.X) / 2
 	midY := (min.Y + max.Y) / 2
 
@@ -56,11 +54,11 @@ func (o *Object) Center() image.Point {
 func NearestObject(objects Objects) int {
 	switch len(objects) {
 	case 0:
-		return -1 // no objects
+		return -1
 	case 1:
-		return 0 // one objects
+		return 0
 	default:
-		return greatArea(objects) // multiple objects
+		return greatArea(objects)
 	}
 }
 
@@ -72,7 +70,6 @@ func greatArea(objects Objects) int {
 		a := object.area()
 
 		if a > maxArea {
-			// greater area
 			maxIdx = i
 			maxArea = a
 		}

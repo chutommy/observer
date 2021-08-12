@@ -16,7 +16,7 @@ type General struct {
 	IdleDuration float64 `toml:"idleDuration"`
 }
 
-// Servos stores Servo's GPIO pin numbers.
+// Servos stores Servo's GPIO pins.
 type Servos struct {
 	PinX int `toml:"pinX"`
 	PinY int `toml:"pinY"`
@@ -49,8 +49,6 @@ type Target struct {
 	Blue      int `toml:"blue"`
 	Thickness int `toml:"thickness"`
 }
-
-// Target stores specification of the target's rectangle.
 
 // Other stores specification of the rectangles of others.
 type Other struct {

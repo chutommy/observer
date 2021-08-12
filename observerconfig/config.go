@@ -7,7 +7,7 @@ import (
 	"observer/geometry"
 )
 
-// ObserverConfig represents a configuration of the Observer's runtime settings.
+// ObserverConfig represents a configuration of the Observer's runtime.
 type ObserverConfig struct {
 	MidPoint image.Point
 	MidRect  image.Rectangle

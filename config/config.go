@@ -14,8 +14,6 @@ var ErrSettingsNotFound = errors.New("settings file not found, default configura
 // GetConfig gets the configuration file for the observer.
 func GetConfig(log *logrus.Entry, path, name, ext string) (*Config, error) {
 	v := viper.New()
-
-	// set default
 	setDefault(v)
 
 	// load from file
@@ -24,13 +22,11 @@ func GetConfig(log *logrus.Entry, path, name, ext string) (*Config, error) {
 	v.AddConfigPath(path)
 
 	log.Info("Searching for a settings file")
-	// read
 	if err := v.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 			cfg, _ := toConfig(v)
 
 			log.Warn("File not found, generating default settings file")
-			// generate file
 			_ = v.SafeWriteConfig()
 
 			return cfg, ErrSettingsNotFound
@@ -103,8 +99,6 @@ func setDefault(v *viper.Viper) {
 // toConfig loads the viper key-value pairs into Config.
 func toConfig(v *viper.Viper) (*Config, error) {
 	var cfg Config
-
-	// unmarshal
 	if err := v.Unmarshal(&cfg); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal into the configuration: %w", err)
 	}

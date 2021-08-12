@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// center centres the Servo to 90 degree.
+// center centres the Servo.
 func (s *Servo) center() {
 	s.set(90)
 }

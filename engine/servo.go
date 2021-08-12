@@ -13,7 +13,7 @@ const (
 	maxDegree = 180
 )
 
-// Servo represents a single Servo engine controller.
+// Servo represents a Servo engine controller.
 type Servo struct {
 	blaster      blaster.Blaster
 	degreeStatus int
@@ -27,12 +27,10 @@ type Servo struct {
 
 // NewServo is a constructor of the Servo.
 func NewServo(blaster blaster.Blaster, servo *observerconfig.Servo) *Servo {
-	// set calibration for inversion
 	if servo.Inverted {
 		servo.Calibration *= -1
 	}
 
-	// construct
 	s := &Servo{
 		blaster:      blaster,
 		degreeStatus: 90,
@@ -42,8 +40,6 @@ func NewServo(blaster blaster.Blaster, servo *observerconfig.Servo) *Servo {
 		toleration:   servo.Toleration,
 		pxsPerDegree: servo.PxsPerDegree,
 	}
-
-	// center
 	s.center()
 
 	return s
@@ -57,13 +53,10 @@ type Servos struct {
 
 // NewServos is a constructor of the Servos.
 func NewServos(sX, sY *Servo) *Servos {
-	// construct
 	ss := &Servos{
 		servoX: sX,
 		servoY: sY,
 	}
-
-	// center
 	ss.Center()
 
 	return ss
@@ -80,13 +73,9 @@ func (s *Servo) set(angle int) {
 	s.blaster.Apply(s.pin, a)
 }
 
-// move changes the angle of the Servo.
-// Respect the maximum/minimum range.
+// move changes the angle of the Servo. It respects the maximum/minimum range.
 func (s *Servo) move(angle float64) {
-	// calibration (+ inversion)
 	angle *= s.calibration
-
-	// movement range
 	newAngle := s.degreeStatus + int(math.Round(angle))
 
 	switch {

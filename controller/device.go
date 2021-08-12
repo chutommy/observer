@@ -8,16 +8,14 @@ import (
 func (o *Observer) LoadRobot() {
 	o.log.Info("Initiating adaptors and connections")
 
-	// define adaptors and devices
+	// adaptors and devices
 	conns := gobot.Connections{o.adaptor}
 	devices := gobot.Devices{o.camera}
 
-	// add window if Show is enabled
 	if o.cfg.Show {
 		devices = append(devices, o.window)
 	}
 
-	// init robot
 	o.robot = gobot.NewRobot(
 		o.name,
 		conns,
@@ -26,7 +24,7 @@ func (o *Observer) LoadRobot() {
 	)
 }
 
-// Start starts the Observer.
+// Start starts the device.
 func (o *Observer) Start() error {
 	return o.robot.Start()
 }

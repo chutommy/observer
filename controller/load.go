@@ -7,7 +7,7 @@ import (
 	"gocv.io/x/gocv"
 )
 
-// initWindow sets window driver if Show option is set up.
+// initWindow sets window driver.
 func (o *Observer) initWindow() {
 	if o.cfg.Show {
 		o.log.Info("Initializing capturing window driver")
@@ -25,23 +25,19 @@ func (o *Observer) initServos() {
 	o.servos = engine.NewServos(servoX, servoY)
 }
 
-// initCamera turns on the camera and initializes the connection
-// between the record and current active frame.
+// initCamera turns on the camera and initializes the connection.
 func (o *Observer) initCamera() {
-	// prepare a structure for an active frame
 	mat := gocv.NewMat()
 	o.activeFrame.Store(mat)
 
 	o.log.Info("Turning camera on (start recording)")
-	// turn camera on
 	_ = o.camera.On(opencv.Frame, func(data interface{}) {
 		cam := data.(gocv.Mat)
 		o.activeFrame.Store(cam)
 	})
 }
 
-// checkFrequency validates the value of the period and if the value is
-// unnecessarily high and unmaintainable, it is automatically reduced.
+// checkFrequency validates the value of the period and edits if necessary.
 func (o *Observer) checkFrequency() {
 	if 1000/o.cfg.Period > o.cfg.MaxFPS {
 		i := (1000 / o.cfg.MaxFPS) + 1
