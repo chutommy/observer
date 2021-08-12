@@ -10,9 +10,8 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const robotName = "Observer"
-
 const (
+	robotName = "Observer"
 	fileName  = "settings"
 	extension = "toml"
 	path      = "."
@@ -50,8 +49,7 @@ func main() {
 	o.LoadWork()
 	o.LoadRobot()
 
-	err = o.Start()
-	if err != nil {
+	if err = o.Start(); err != nil {
 		log.Fatal("failed to start the Observer: %w", err)
 	}
 }
