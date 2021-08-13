@@ -1,0 +1,35 @@
+version: 2
+updates:
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "chutommy"
+    labels:
+      - "github-actions"
+      - "dependencies"
+    rebase-strategy: "auto"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "chutommy"
+    labels:
+      - "docker"
+      - "dependencies"
+    rebase-strategy: "auto"
+
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "chutommy"
+    labels:
+      - "gomod"
+      - "dependencies"
+    rebase-strategy: "auto"
