@@ -3,7 +3,7 @@ package engine
 import (
 	"math"
 
-	"observer/observerconfig"
+	"github.com/chutommy/observer/observerconfig"
 
 	blaster "github.com/ddrager/go-pi-blaster"
 )

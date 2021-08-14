@@ -1,7 +1,7 @@
 package observerconfig
 
 import (
-	"observer/geometry"
+	"github.com/chutommy/observer/geometry"
 )
 
 // Servo stores observer data of the servo engine.

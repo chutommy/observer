@@ -4,9 +4,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"observer/config"
-	"observer/engine"
-	"observer/observerconfig"
+	"github.com/chutommy/observer/config"
+	"github.com/chutommy/observer/engine"
+	"github.com/chutommy/observer/observerconfig"
 
 	blaster "github.com/ddrager/go-pi-blaster"
 	"github.com/sirupsen/logrus"
