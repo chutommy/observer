@@ -12,17 +12,15 @@ import (
 
 const (
 	robotName = "Observer"
+
+	// config file
 	fileName  = "settings"
 	extension = "toml"
 	path      = "."
 )
 
 func main() {
-	log := logrus.New()
-	log.SetOutput(os.Stdout)
-	log.SetFormatter(&logrus.TextFormatter{
-		FullTimestamp: true,
-	})
+	log := logger()
 
 	entryConfig := log.WithFields(logrus.Fields{
 		"location":       "configuration",
@@ -52,4 +50,13 @@ func main() {
 	if err = o.Start(); err != nil {
 		log.Fatal("failed to start the Observer: %w", err)
 	}
+}
+
+func logger() *logrus.Logger {
+	log := logrus.New()
+	log.SetOutput(os.Stdout)
+	log.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp: true,
+	})
+	return log
 }
