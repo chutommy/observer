@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"observer/engine"
+	"github.com/chutommy/observer/engine"
 
 	"gobot.io/x/gobot/platforms/opencv"
 	"gocv.io/x/gocv"

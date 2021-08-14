@@ -3,8 +3,8 @@ package observerconfig
 import (
 	"image"
 
-	"observer/config"
-	"observer/geometry"
+	"github.com/chutommy/observer/config"
+	"github.com/chutommy/observer/geometry"
 )
 
 // ObserverConfig represents a configuration of the Observer's runtime.

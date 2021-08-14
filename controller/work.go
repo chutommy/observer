@@ -3,7 +3,7 @@ package controller
 import (
 	"time"
 
-	"observer/geometry"
+	"github.com/chutommy/observer/geometry"
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/opencv"

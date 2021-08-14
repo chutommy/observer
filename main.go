@@ -4,8 +4,8 @@ import (
 	"errors"
 	"os"
 
-	"observer/config"
-	"observer/controller"
+	"github.com/chutommy/observer/config"
+	"github.com/chutommy/observer/controller"
 
 	"github.com/sirupsen/logrus"
 )
