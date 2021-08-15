@@ -45,6 +45,6 @@ Enter `./observer -h` to get more info about the execution command.
 
 ## Samples
 
-![gif sample](img/1.gif)
-![gif sample](img/2.gif)
-![gif sample](img/3.gif)
+![gif sample](docs/project/gifs/1.gif)
+![gif sample](docs/project/gifs/2.gif)
+![gif sample](docs/project/gifs/3.gif)
