@@ -1,54 +1,50 @@
 # Observer
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/00.jpg">
-</p>
-<br>
+![eye logo](docs/project/logo.svg)
 
-The Observer is a software for a face recognition and face tracking.
-The application should be able to fully and reliably control the movement of the camera using two 180° servomotors in a half-space. For the recognition the HaarCascades from official OpenCV GitHub repo are used. All variables are configurable (for more information, run the application with the `--help` flag).
+The Observer is a software for a face recognition and face tracking devices. The
+application is able to fully and reliably control the movement of the camera
+using two servomotors in any direction. The recognition algorithm is provided by
+the real-time optimized computer vision library OpenCV.
 
-The other part of this project is available at https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing.
+The entire software was developed with a performance in mind and all decisions
+were made to be perfectly compatible with low-end PCs (aiming to be runnable on
+minicomputers like Raspberry Pis).
 
 ## Dependencies
 
-The observer uses these dependencies to run properly:
-  * Go v1.14 (https://golang.org/dl/)
-  * Gobot v1.14.0 (https://gobot.io/)
-  * GoCV v0.23.0 with OpenCV v4.3.0 (https://gocv.io/)
-  * HaarCascade (https://github.com/opencv/opencv)
-  
+The observer uses these technologies to run properly on all devices:
+
+* [Go v1.14](https://golang.org/dl/)
+* [Gobot v1.14.0](https://gobot.io/)
+* [GoCV v0.23.0 ](https://gocv.io/)
+* [OpenCV v4.3.0](https://opencv.org/)
+* [HaarCascade](https://github.com/opencv/opencv/)
+
 ## Installation
 
-On Raspberry Pi (CPU ARMv6+), with `go`, `opencv4`, `gocv` and `gobot` installed, run this command to install executable file into your PATH:
+Tested on Raspberry Pi 3 Model B+:
+
+*With `go`, `opencv4`, `gocv` and `gobot` installed, run this command to install
+executable file into your PATH:*
 
 ```bash
 $ go get github.com/chutommy/observer-rpi
 ```
 
-Or you can also get `install.sh` file and run it in the project folder to install all dependencies and the Observer software (can take up to 15 minutes, depends on the performance):
+**OR**
+
+You can also get `install.sh` file and run it in the project folder to install
+all dependencies and the Observer software (can take up to 15 minutes).
 
 ```bash
 $ ./install
 ```
 
-Type `./observer -h` for the help.
-
-*(tested on Raspbian OS with Raspberry Pi 3B+)*
+Enter `./observer -h` to get more info about the execution command.
 
 ## Samples
 
-<p align="left">
-  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/05.gif">
-</p>
-
-<p align="left">
-  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/04.gif">
-</p>
-
-<p align="left">
-  <img src="https://raw.githubusercontent.com/chutommy/observer/master/img/03.gif">
-</p>
-<br>
-
-To see more, click <a href="https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing" target="_blank">here</a>.
+![gif sample](docs/project/gifs/1.gif)
+![gif sample](docs/project/gifs/2.gif)
+![gif sample](docs/project/gifs/3.gif)

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 576 512"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="logo.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     id="namedview9"
+     showgrid="false"
+     inkscape:zoom="0.921875"
+     inkscape:cx="240.2066"
+     inkscape:cy="218.18386"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <metadata
+     id="metadata10">image/svg+xml<rdf:RDF>
+  <cc:Work
+     rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+  </cc:Work>
+</rdf:RDF>
+</metadata>
+  <defs
+     id="defs8" />
+  <g
+     id="g819"
+     transform="translate(-1.3922096e-6,10.657233)"
+     style="stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke:#ffffff;stroke-linecap:round;paint-order:markers stroke fill;stroke-opacity:1">
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       id="path2"
+       d="M 555.60101,174.72127 C 501.97314,83.716337 401.95351,22.893259 287.99999,22.893259 c -114.00107,0 -213.997882,60.865878 -267.601023,151.828011 a 45.65274,45.65274 0 0 0 0,46.35657 C 74.027788,312.08182 174.04647,372.9049 287.99999,372.9049 c 114.00107,0 213.99787,-60.86588 267.60102,-151.82801 a 45.650838,45.650838 0 0 0 0,-46.35562 z M 287.99999,327.25121 c -97.54292,0 -182.70132,-52.02714 -228.268465,-129.35213 C 101.73008,126.62891 177.36303,76.850217 265.32723,69.491417 c 9.31715,9.59203 15.06381,22.67181 15.06381,37.100283 0,29.41619 -23.84644,53.26264 -53.26264,53.26264 -29.41619,0 -53.26264,-23.84645 -53.26264,-53.26264 l 9.5e-4,-0.04 c -9.70806,18.1521 -15.21885,38.88743 -15.21885,60.91154 0,71.43946 57.91266,129.35212 129.35213,129.35212 71.43947,0 129.35213,-57.91266 129.35213,-129.35212 0,-29.51416 -9.89164,-56.71425 -26.53146,-78.481553 52.88125,22.021303 96.92279,60.511163 125.44779,108.917393 -45.56619,77.32499 -130.72554,129.35213 -228.26846,129.35213 z" />
+    <text
+       transform="scale(1.0677697,0.93653154)"
+       id="text814"
+       y="498.22919"
+       x="74.292366"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:97.32538605px;line-height:1.25;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-linecap:round;paint-order:markers stroke fill;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:97.32538605px;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke:#ffffff;stroke-linecap:round;paint-order:markers stroke fill;stroke-opacity:1"
+         y="498.22919"
+         x="74.292366"
+         id="tspan812">OBSERVER</tspan></text>
+  </g>
+</svg>
+<!-- Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+
