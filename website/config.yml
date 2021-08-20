@@ -1,0 +1,75 @@
+baseURL: "https://chutommy.github.io/observer/"
+enableInlineShortcodes: true
+languageCode: "en-us"
+title: "Observer Project"
+theme: "uwe-uwe"
+relativeURLs: true
+
+disableKinds:
+  - "section"
+  - "taxonomy"
+  - "term"
+  - "RSS"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    highlight:
+      style: igor
+
+params:
+
+  uweuwe:
+    metadata:
+      author: "Tommy Chu"
+
+    logo:
+      display: true
+      src: "/assets/img/logo/logo.png"
+
+    shortDesc:
+      display: true
+      value: "The documentation of the project Observer, the mind and soul of a face tracking surveillance robot."
+
+    platformLinks:
+      display: true
+      displayMode: "as-icons-and-text"
+
+      platforms:
+        - name: "author"
+          display: true
+          iconSrc: "/assets/img/platforms/personal.png"
+          target: "https://chutommy.github.io/"
+          text: "Author"
+          title: "Go to author's website"
+
+        - name: "source"
+          display: true
+          iconSrc: "/assets/img/platforms/github.png"
+          target: "https://github.com/chutommy/observer"
+          text: "Source"
+          title: "Go to the Observer Github repository"
+
+        - name: "publication"
+          display: true
+          iconSrc: "/assets/img/platforms/document.png"
+          target: "https://docs.google.com/document/d/19FhBe4HvJeZMuhAFcyugnGlhiUhVPWTIfCu6MOH3Rxk/edit?usp=sharing"
+          text: "Publication"
+          title: "Go to the project publication [cs]"
+
+    toc:
+      display: true
+
+    renderHooks:
+      image:
+        use: true
+
+      link:
+        use: true
+
+      heading:
+        use: true
+
+    syntaxHiglighingCustom:
+      use: false
