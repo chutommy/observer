@@ -6,10 +6,11 @@ draft: false
 
 ## Gallery
 
-**Full gallery:**
+{{< notification type="info" title="Full gallery">}}
 *See all photos and videos captured throughout the growth and development
 process of the Observer project in
 the [docs/](https://github.com/chutommy/observer/tree/master/docs) folder.*
+{{< /notification >}}
 
 ### Samples
 

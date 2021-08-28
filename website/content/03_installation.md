@@ -6,10 +6,12 @@ draft: false
 
 ## Installation
 
-Tested on Raspberry Pi 3 Model B+:
+{{< notification type="info" title="Info">}}
+Tested on Raspberry Pi 3 Model B+
+{{< /notification >}}
 
-*With `go`, `opencv4`, `gocv` and `gobot` installed, run this command to install
-executable file into your **PATH**:*
+With `go`, `opencv4`, `gocv` and `gobot` installed, run this command to install
+executable file into your **PATH**:
 
 ```bash
 $ go get github.com/chutommy/observer-rpi
@@ -27,5 +29,7 @@ $ sudo ./install
 
 ### Post-install steps
 
+{{< notification type="info" title="Tip">}}
 Type `./observer -h` or `--help` in a terminal to get more info about the
 observer command.
+{{< /notification >}}
