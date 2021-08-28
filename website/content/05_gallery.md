@@ -1,5 +1,5 @@
 ---
-weight: 5
+eight: 5
 title: "Gallery"
 draft: false
 ---
@@ -7,9 +7,10 @@ draft: false
 ## Gallery
 
 {{< notification type="info" title="Full gallery">}}
-*See all photos and videos captured throughout the growth and development
-process of the Observer project in
-the [docs/](https://github.com/chutommy/observer/tree/master/docs) folder.*
+See all photos and videos captured throughout the growth and development
+process of the Observer project in the
+<a href="https://github.com/chutommy/observer/tree/master/docs" target="_blank">docs/</a>
+folder.
 {{< /notification >}}
 
 ### Samples

@@ -29,7 +29,5 @@ $ sudo ./install
 
 ### Post-install steps
 
-{{< notification type="info" title="Tip">}}
 Type `./observer -h` or `--help` in a terminal to get more info about the
 observer command.
-{{< /notification >}}
