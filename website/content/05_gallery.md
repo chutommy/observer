@@ -1,5 +1,5 @@
 ---
-eight: 5
+weight: 5
 title: "Gallery"
 draft: false
 ---
