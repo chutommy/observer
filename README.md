@@ -1,6 +1,6 @@
 # Observer
 
-![eye logo](docs/project/logo.svg)
+![eye logo](https://raw.githubusercontent.com/chutommy/observer/master/docs/project/logo.svg)
 
 The Observer is a software for a face recognition and face tracking devices. The
 application is able to fully and reliably control the movement of the camera
