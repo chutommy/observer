@@ -60,6 +60,10 @@ params:
 
     toc:
       display: true
+    
+    googleAnalytics:
+      active: true
+      id: G-L57N702NRS
 
     renderHooks:
       image:
