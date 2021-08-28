@@ -1,34 +1,34 @@
 #!/usr/bin/bash
 
 # gobot
-go get -d -u gobot.io/x/gobot/...
-if [ $? -ne "0" ]
+if ! go get -d -u gobot.io/x/gobot/...;
 then
     echo "Could not get Gobot"
+    exit 2
 fi
 
 # gocv and opencv
-go get -u -d gocv.io/x/gocv
-if [ $? -ne "0" ]
+if ! go get -u -d gocv.io/x/gocv;
 then
     echo "Could not get GoCV"
+    exit 2
 fi
 
-cd $GOPATH/src/gocv.io/x/gocv
-if [ $? -ne "0" ]
+if ! cd "$GOPATH/src/gocv.io/x/gocv";
 then
     echo "GOPATH variable not set"
+    exit 2
 fi
 
-make install
-if [ $? -ne "0" ]
+if ! make install;
 then
     echo "Could not install OpenCV"
+    exit 2
 fi
 
 # observer
-go get github.com/chutommy/observer
-if [ $? -ne "0" ]
+if ! go get github.com/chutommy/observer;
 then
     echo "Could not get Observer"
+    exit 2
 fi
