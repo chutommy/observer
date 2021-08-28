@@ -1,0 +1,3 @@
+[submodule "website/themes/uwe-uwe"]
+	path = website/themes/uwe-uwe
+	url = https://github.com/chutommy/uwe-uwe-hugo.git
