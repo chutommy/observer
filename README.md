@@ -11,6 +11,10 @@ The entire software was developed with a performance in mind and all decisions
 were made to be perfectly compatible with low-end PCs (aiming to be runnable on
 minicomputers like Raspberry Pis).
 
+### Website
+
+Check out the project website at [chutommy.github.io/observer](https://chutommy.github.io/observer/).
+
 ## Dependencies
 
 The observer uses these technologies to run properly:
