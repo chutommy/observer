@@ -15,37 +15,37 @@ folder.
 
 ### Samples
 
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/project/gifs/1.gif)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/project/gifs/2.gif)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/project/gifs/3.gif)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/project/gifs/1.gif)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/project/gifs/2.gif)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/project/gifs/3.gif)
 
 ### Skelet
 
 #### Scheme
 
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/schema/00.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/schema/02.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/schema/03.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/schema/07.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/schema/09.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/schema/00.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/schema/02.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/schema/03.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/schema/07.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/schema/09.jpg)
 
 #### Construction
 
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/construction/01.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/construction/09.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/construction/11.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/skelet/construction/13.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/construction/01.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/construction/09.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/construction/11.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/skelet/construction/13.jpg)
 
 ### Cover
 
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/cover/construction/01.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/cover/construction/04.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/cover/construction/09.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/cover/construction/11.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/cover/construction/12.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/cover/construction/01.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/cover/construction/04.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/cover/construction/09.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/cover/construction/11.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/cover/construction/12.jpg)
 
 ### Result
 
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/result/images/00.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/result/images/01.jpg)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/result/images/02.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/result/images/00.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/result/images/01.jpg)
+![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/result/images/02.jpg)
