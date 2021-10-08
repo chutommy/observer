@@ -109,3 +109,7 @@ the [docs/](https://github.com/chutommy/observer/tree/master/docs) folder.*
 ![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/result/images/00.jpg)
 ![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/result/images/01.jpg)
 ![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/result/images/02.jpg)
+
+## License
+
+The project is under the MIT open source software license.
