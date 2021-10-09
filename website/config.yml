@@ -1,4 +1,4 @@
-baseURL: "https://chutommy.github.io/observer/"
+baseURL: "https://chutommy.com/observer/"
 enableInlineShortcodes: true
 languageCode: "en-us"
 title: "Observer Project"
@@ -44,7 +44,7 @@ params:
         - name: "author"
           display: true
           iconSrc: "/assets/img/platforms/personal.png"
-          target: "https://chutommy.github.io/"
+          target: "https://chutommy.com/"
           text: "Author"
           title: "Go to author's website"
 

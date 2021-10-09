@@ -13,7 +13,7 @@ minicomputers like Raspberry Pis).
 
 ### Website
 
-Check out the project website at [chutommy.github.io/observer](https://chutommy.github.io/observer/).
+Check out the project website at [chutommy.com/observer](https://chutommy.com/observer/).
 
 ## Dependencies
 
