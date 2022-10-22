@@ -71,7 +71,7 @@ version:** [Dozorce - CS](https://docs.google.com/document/d/19FhBe4HvJeZMuhAFcy
 **Full gallery:**
 *See all photos and videos captured throughout the growth and development
 process of the Observer project in
-the [docs/](https://github.com/chutommy/observer/tree/master/docs) folder.*
+the [docs/](https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing) folder.*
 
 ### Samples
 
