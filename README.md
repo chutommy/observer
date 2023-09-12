@@ -1,7 +1,8 @@
-# Observer
+# PROJECT OVERSEER
 
-![eye logo](https://raw.githubusercontent.com/chutommy/observer/master/docs/project/logo.svg)
+**[Official website of the Poject Overseer](https://chutommy.com/projects/overseer/)**
 
+## Observer library
 The Observer is a software for a face recognition and face tracking devices. The
 application is able to fully and reliably control the movement of the camera
 using two servomotors in any direction. The real-time recognition algorithm is
@@ -10,10 +11,6 @@ provided by the optimized computer vision library OpenCV.
 The entire software was developed with a performance in mind and all decisions
 were made to be perfectly compatible with low-end PCs (aiming to be runnable on
 minicomputers like Raspberry Pis).
-
-### Website
-
-Check out the project website at [chutommy.com/observer](https://chutommy.com/observer/).
 
 ## Dependencies
 
@@ -50,28 +47,6 @@ $ sudo ./install
 
 Type `./observer -h` or `--help` in a terminal to get more info about the
 observer command.
-
-## Project publication
-
-The document which explains the goals of the Observer project. Everything
-including the original inspiration and motive is thoroughly described and
-discussed. All the questions/answers and critical decisions that were made
-during the development process are included and analyzed as well.
-
-The document also communicates my personal struggles, mistakes and doubts caused
-by lack of knowledge, poor design choices and low budget for hardware
-components. However, all obstacles and inaccuracies had been overcome and the
-project was successfully finished.
-
-**Czech
-version:** [Dozorce - CS](https://docs.google.com/document/d/19FhBe4HvJeZMuhAFcyugnGlhiUhVPWTIfCu6MOH3Rxk/edit?usp=sharing)
-
-## Gallery
-
-**Full gallery:**
-*See all photos and videos captured throughout the growth and development
-process of the Observer project in
-the [docs/](https://drive.google.com/drive/folders/1of6aFjSCA9LWL8vPtI93ILUU1oUt7Fva?usp=sharing) folder.*
 
 ### Samples
 
