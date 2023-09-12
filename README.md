@@ -1,8 +1,8 @@
 # PROJECT OVERSEER
 
-**[Official website of the Poject Overseer](https://chutommy.com/projects/overseer/)**
+### **[Official website of the Project Overseer](https://chutommy.com/projects/overseer/)**
 
-## Observer library
+# Observer library
 The Observer is a software for a face recognition and face tracking devices. The
 application is able to fully and reliably control the movement of the camera
 using two servomotors in any direction. The real-time recognition algorithm is
