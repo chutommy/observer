@@ -48,12 +48,6 @@ $ sudo ./install
 Type `./observer -h` or `--help` in a terminal to get more info about the
 observer command.
 
-### Samples
-
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/project/gifs/1.gif)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/project/gifs/2.gif)
-![](https://raw.githubusercontent.com/chutommy/observer/master/docs/compressed/project/gifs/3.gif)
-
 ### Skelet
 
 #### Scheme
